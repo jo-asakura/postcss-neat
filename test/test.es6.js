@@ -8,7 +8,7 @@ import neatCore from '../neat-core.es6.js';
 import postcss from 'postcss';
 import postCssMixins from 'postcss-mixins';
 import postCssNested from 'postcss-nested';
-import neatMixins from '../index.es6.js';
+import neatMixins from '../index.js';
 
 import CleanCss from 'clean-css';
 let minifier = new CleanCss();
