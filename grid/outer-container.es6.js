@@ -12,7 +12,7 @@ import functions from '../core/functions.es6.js';
 //
 // @example - LESS Usage
 //   .element {
-//     .outer-container(100%);
+//     @mixin outer-container 100%;
 //   }
 //
 // @example - CSS Output

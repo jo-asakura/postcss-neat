@@ -9,7 +9,12 @@
 Note, that you must use this plugin in conjunction with [postcss-mixins](https://github.com/postcss/postcss-mixins) and [postcss-nested](https://github.com/postcss/postcss-nested):
 
 ```js
-postcss([require('postcss-mixins')({ mixins: require('postcss-neat') }), require('postcss-nested')])
+postcss([
+  require('postcss-mixins')({
+    mixins: require('postcss-neat')
+  }),
+  require('postcss-nested')
+])
 ```
 
 <!---

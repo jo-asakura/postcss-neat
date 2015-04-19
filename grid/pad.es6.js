@@ -11,7 +11,7 @@ import functions from '../core/functions.es6.js';
 //
 // @example - LESS Usage
 //   .element {
-//     .pad(30px -20px 10px default);
+//     @mixin pad 30px -20px 10px default;
 //   }
 //
 // @example - CSS Output

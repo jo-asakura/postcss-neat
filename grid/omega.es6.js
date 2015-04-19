@@ -19,15 +19,15 @@ import functions from '../core/functions.es6.js';
 //
 // @example - LESS Usage
 //   .element {
-//     .omega();
+//     @mixin omega;
 //   }
 //
 //   .nth-element {
-//     .omega(4n);
+//     @mixin omega 4n;
 //   }
 //
 //   .auto-element {
-//     .omega(auto);
+//     @mixin omega auto;
 //   }
 //
 // @example - CSS Output

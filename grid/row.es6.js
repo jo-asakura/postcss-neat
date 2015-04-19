@@ -17,7 +17,7 @@ import fillParent from './fill-parent.es6.js';
 //
 // @example - LESS Usage
 //  .element {
-//    .row();
+//    @mixin row;
 //  }
 //
 // @example - CSS Output

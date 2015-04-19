@@ -23,10 +23,10 @@ import functions from '../core/functions.es6.js';
 //
 // @example - LESS Usage
 //   .element {
-//     .span-columns(6);
+//     @mixin span-columns 6;
 //
 //    .nested-element {
-//      .span-columns(2, 6);
+//      @mixin span-columns 2 6;
 //    }
 //  }
 //

@@ -16,11 +16,11 @@ import functions from '../core/functions.es6.js';
 //
 // @example - LESS Usage
 //   .element-neg {
-//     .shift(-3, 6);
+//     @mixin shift -3 6;
 //   }
 //
 //   .element-pos {
-//     .shift(2);
+//     @mixin shift 2;
 //   }
 //
 // @example - CSS output

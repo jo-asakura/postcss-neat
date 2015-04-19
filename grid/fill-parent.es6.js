@@ -4,7 +4,7 @@
 //
 // @example - LESS Usage
 //   .element {
-//     .fill-parent();
+//     @mixin fill-parent;
 //   }
 //
 // @example - CSS Output
