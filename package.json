@@ -1,0 +1,47 @@
+{
+  "name": "postcss-neat",
+  "version": "0.0.0",
+  "description": "PostCSS plugin that provides a semantic and fluid grid framework.",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcssplugin",
+    "columns",
+    "grid",
+    "layout",
+    "media",
+    "media-queries",
+    "neat",
+    "queries",
+    "semantic"
+  ],
+  "author": {
+    "name": "Alexandr Marinenko",
+    "url": "http://codepen.io/jo-asakura/popular/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jo-asakura/postcss-neat.git"
+  },
+  "dependencies": {
+    "babel-core": "^5.1.10"
+  },
+  "devDependencies": {
+    "babel-eslint": "^3.0.1",
+    "chai": "2.2.0",
+    "clean-css": "^3.1.9",
+    "eslint": "^0.11.0-alpha.0",
+    "gulp": "3.8.11",
+    "gulp-eslint": "0.8.0",
+    "gulp-mocha": "2.0.1",
+    "i": "^0.3.3",
+    "npm": "^2.8.3",
+    "postcss": "^4.1.5",
+    "postcss-mixins": "^0.1.1",
+    "postcss-nested": "^0.2.2"
+  },
+  "scripts": {
+    "test": "gulp"
+  }
+}
