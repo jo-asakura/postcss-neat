@@ -1,6 +1,6 @@
 {
   "name": "postcss-neat",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "PostCSS plugin that provides a semantic and fluid grid framework.",
   "keywords": [
     "postcss",
@@ -19,6 +19,7 @@
     "name": "Alexandr Marinenko",
     "url": "http://codepen.io/jo-asakura/popular/"
   },
+  "homepage": "http://jo-asakura.github.io/postcss-neat/",
   "license": "MIT",
   "repository": {
     "type": "git",
