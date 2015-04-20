@@ -16,7 +16,7 @@ let cleanCss = (css) => {
   return minifier.minify(css || '').styles;
 };
 
-let processor = postcss([postCssMixins({ mixins: neatMixins }), postCssNested]);
+let processor = postcss([postCssMixins({ mixins: neatMixins() }), postCssNested]);
 let test = function (input, output, done) {
   var css = processor.process(input).css;
   expect(cleanCss(css)).to.eql(cleanCss(output));

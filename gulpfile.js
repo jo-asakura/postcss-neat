@@ -28,7 +28,7 @@ gulp.task('css', function () {
   var processors = [
     autoprefixer({ browsers: ['last 1 version'] }),
     postcssVars,
-    postcssMixins({ mixins: neatMixins }),
+    postcssMixins({ mixins: neatMixins() }),
     postcssNested
   ];
 
