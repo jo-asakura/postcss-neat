@@ -17,6 +17,27 @@ postcss([
 ])
 ```
 
+Or, there is a gulp usage:
+
+```js
+require('postcss-neat/es6-reg');
+
+var gulp = require('gulp');
+gulp
+  .task('css', function () {
+    var processors = [
+      require('autoprefixer-core')({ browsers: ['last 1 version'] }),
+      require('postcss-simple-vars'),
+      require('postcss-mixins')({ mixins: require('postcss-neat')() }),
+      require('postcss-nested')
+    ];
+    return gulp.src('./input/*.css')
+      .pipe(require('gulp-postcss')(processors))
+      .pipe(gulp.dest('./output/'));
+  })
+  .task('default', ['css']);
+```
+
 <!---
 If you are planning to override the default grid settings (12 columns, and etc.), it is easier to create a copy of an existing [_variables.less](/stylesheets/core/_variables.less) file for that purpose. Make sure to replace existing import to your version of variables in [_less-neat.less](/stylesheets/_less-neat.less):
 
