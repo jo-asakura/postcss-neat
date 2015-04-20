@@ -11,7 +11,7 @@ Note, that you must use this plugin in conjunction with [postcss-mixins](https:/
 ```js
 postcss([
   require('postcss-mixins')({
-    mixins: require('postcss-neat')
+    mixins: require('postcss-neat')()
   }),
   require('postcss-nested')
 ])
