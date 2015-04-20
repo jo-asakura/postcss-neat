@@ -427,13 +427,20 @@ th {
 }
 
 /* LAYOUT STYLES */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
-  font-size: 15px;
+  font-family: Lato, 'Helvetica Neue', Helvetica, Arial, serif;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.5em;
   color: #666;
   background: #fafafa url(../images/body-bg.jpg) 0 0 repeat;
+  min-width: 315px;
 }
 
 p {
@@ -443,6 +450,7 @@ p {
 a {
   color: #2879d0;
 }
+
 a:hover {
   color: #2268b2;
 }
@@ -450,7 +458,6 @@ a:hover {
 header {
   padding-top: 40px;
   padding-bottom: 40px;
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   background: #2e7bcf url(../images/header-bg.jpg) 0 0 repeat-x;
   border-bottom: solid 1px #275da1;
 }
@@ -462,8 +469,13 @@ header h1 {
   font-size: 72px;
   font-weight: normal;
   line-height: 1;
-  color: #fff;
   letter-spacing: -1px;
+}
+
+header h1 a,
+header h1 a:hover,
+header h1 a:active {
+  color: #fff;
 }
 
 header h2 {
@@ -517,28 +529,31 @@ aside#sidebar p.repo-owner a {
 }
 
 a.button {
-  width: 134px;
-  height: 58px;
+  width: 202px;
+  height: 80px;
   padding-top: 22px;
   padding-left: 68px;
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 23px;
   line-height: 1.2;
   color: #fff;
 }
+
 a.button small {
   display: block;
   font-size: 11px;
 }
+
 header a.button {
   position: absolute;
   top: 0;
   right: 0;
   background: transparent url(../images/github-button.png) 0 0 no-repeat;
 }
+
 aside a.button {
   display: block;
-  width: 138px;
+  height: 78px;
+  width: 202px;
   padding-left: 64px;
   margin-bottom: 20px;
   font-size: 21px;
@@ -565,6 +580,7 @@ pre {
   background: #fff;
   border: solid 1px #f2f2f2;
 }
+
 pre code {
   padding: 0;
   color: #2879d0;
@@ -575,7 +591,6 @@ pre code {
 ul, ol, dl {
   margin-bottom: 20px;
 }
-
 
 /* COMMON STYLES */
 
@@ -608,13 +623,11 @@ form {
 
 }
 
-
 /* GENERAL ELEMENT TYPE STYLES */
 
 #main-content h1 {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 2.8em;
   font-weight: normal;
   color: #474747;
@@ -631,12 +644,12 @@ form {
 
 #main-content h2 {
   margin-bottom: 8px;
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 22px;
   font-weight: bold;
   color: #474747;
   text-indent: 4px;
 }
+
 #main-content h2:before {
   padding-right: 0.3em;
   margin-left: -1.5em;
@@ -647,7 +660,6 @@ form {
 #main-content h3 {
   margin-top: 24px;
   margin-bottom: 8px;
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 18px;
   font-weight: bold;
   color: #474747;
@@ -663,7 +675,6 @@ form {
 
 #main-content h4 {
   margin-bottom: 8px;
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 15px;
   font-weight: bold;
   color: #474747;
@@ -679,11 +690,11 @@ h4:before {
 
 #main-content h5 {
   margin-bottom: 8px;
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: 14px;
   color: #474747;
   text-indent: 3px;
 }
+
 h5:before {
   padding-right: 0.3em;
   margin-left: -3.2em;
@@ -693,11 +704,11 @@ h5:before {
 
 #main-content h6 {
   margin-bottom: 8px;
-  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
   font-size: .8em;
   color: #474747;
   text-indent: 3px;
 }
+
 h6:before {
   padding-right: 0.3em;
   margin-left: -3.7em;
@@ -753,6 +764,7 @@ footer {
 footer a {
   color: #666;
 }
+
 footer a:hover {
   color: #444;
 }
@@ -766,33 +778,47 @@ footer a:hover {
   content: '.';
 }
 
-.clearfix {display: inline-block;}
-* html .clearfix {height: 1%;}
-.clearfix {display: block;}
+.clearfix {
+  display: inline-block;
+}
+
+* html .clearfix {
+  height: 1%;
+}
+
+.clearfix {
+  display: block;
+}
 
 /* #Media Queries
 ================================================== */
 
 /* Smaller than standard 960 (devices and browsers) */
-@media only screen and (max-width: 959px) { }
+@media only screen and (max-width: 959px) {
+}
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
   .inner {
     width: 740px;
   }
+
   header h1, header h2 {
     width: 340px;
   }
+
   header h1 {
     font-size: 60px;
   }
+
   header h2 {
     font-size: 30px;
   }
+
   #main-content {
     width: 490px;
   }
+
   #main-content h1:before,
   #main-content h2:before,
   #main-content h3:before,
@@ -810,21 +836,27 @@ footer a:hover {
   .inner {
     width: 93%;
   }
+
   header {
     padding: 20px 0;
   }
+
   header .inner {
     position: relative;
   }
+
   header h1, header h2 {
     width: 100%;
   }
+
   header h1 {
     font-size: 48px;
   }
+
   header h2 {
     font-size: 24px;
   }
+
   header a.button {
     position: relative;
     display: inline-block;
@@ -842,15 +874,18 @@ footer a:hover {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
   }
+
   header a.button small {
     display: inline;
     font-size: 13px;
   }
+
   #main-content,
   aside#sidebar {
     float: none;
     width: 100% ! important;
   }
+
   aside#sidebar {
     min-height: 0;
     padding: 20px 0;
@@ -858,9 +893,11 @@ footer a:hover {
     background-image: none;
     border-top: solid 1px #ddd;
   }
+
   aside#sidebar a.button {
     display: none;
   }
+
   #main-content h1:before,
   #main-content h2:before,
   #main-content h3:before,
@@ -874,8 +911,9 @@ footer a:hover {
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-@media only screen and (min-width: 480px) and (max-width: 767px) { }
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+}
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) { }
-
+@media only screen and (max-width: 479px) {
+}

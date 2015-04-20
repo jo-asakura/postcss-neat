@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="A semantic and fluid grid framework on top of PostCSS">
+    <meta name="keywords" content="columns,grid,layout,media,media-queries,neat,queries,postcss,semantic,demo">
+    <meta name="author" content="Alexandr Marinenko (jo-asakura)">
+
+    <title>PostCSS-neat demo page by Alexandr Marinenko</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/demo.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1><a href="index.html">PostCSS-neat</a></h1>
+        <h2>A semantic and fluid grid framework on top of PostCSS</h2>
+        <a href="https://github.com/jo-asakura/postcss-neat" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <section class="global-wrapper">
+      <ul class="faded-out-list">
+        <li class="faded-out-list__item"></li>
+        <li class="faded-out-list__item"></li>
+        <li class="faded-out-list__item"></li>
+        <li class="faded-out-list__item"></li>
+
+        <li class="faded-out-list__item"></li>
+        <li class="faded-out-list__item"></li>
+        <li class="faded-out-list__item"></li>
+        <li class="faded-out-list__item"></li>
+
+        <li class="faded-out-list__item"></li>
+        <li class="faded-out-list__item"></li>
+        <li class="faded-out-list__item"></li>
+        <li class="faded-out-list__item"></li>
+      </ul>
+
+      <article id="basic" class="section-block basic">
+        <h2 class="outer-container__heading u-text-center">Basic</h2>
+        <div class="u-light-bg basic__outer">
+          <div class="u-text-center outer-container__top-label">.outer-container();</div>
+          <div class="u-dark-bg u-block basic__outer__col">.span-columns(6);</div>
+          <div class="u-dark-bg u-block basic__outer__col">.span-columns(6);</div>
+        </div>
+      </article>
+
+      <article id="multiple-rows" class="section-block multiple-rows">
+        <h2 class="outer-container__heading u-text-center">Multiple rows</h2>
+        <div class="u-light-bg multiple-rows__outer">
+          <div class="u-text-center outer-container__top-label">.outer-container();</div>
+
+          <div class="u-dark-bg u-block multiple-rows__1">(1)</div>
+          <div class="u-dark-bg u-block multiple-rows__11">.span-columns(11);<br>.omega();</div>
+
+          <div class="u-dark-bg u-block multiple-rows__2">.span-columns(2);</div>
+          <div class="u-dark-bg u-block multiple-rows__10">.span-columns(10);<br>.omega();</div>
+
+          <div class="u-dark-bg u-block multiple-rows__3">.span-columns(3);</div>
+          <div class="u-dark-bg u-block multiple-rows__9">.span-columns(9);<br>.omega();</div>
+
+          <div class="u-dark-bg u-block multiple-rows__4">.span-columns(4);</div>
+          <div class="u-dark-bg u-block multiple-rows__8">.span-columns(8);<br>.omega();</div>
+
+          <div class="u-dark-bg u-block multiple-rows__5">.span-columns(5);</div>
+          <div class="u-dark-bg u-block multiple-rows__7">.span-columns(7);<br>.omega();</div>
+
+          <div class="u-dark-bg u-block multiple-rows__6">.span-columns(6);</div>
+          <div class="u-dark-bg u-block multiple-rows__6">.span-columns(6);</div>
+        </div>
+      </article>
+
+      <article id="nesting-columns" class="section-block nesting-columns">
+        <h2 class="outer-container__heading u-text-center">Nesting columns</h2>
+        <div class="u-light-bg nesting-columns__outer">
+          <div class="u-text-center outer-container__top-label">.outer-container();</div>
+
+          <div class="u-dark-bg u-block nesting-columns__4">.span-columns(4);</div>
+          <div class="u-dark-bg u-block nesting-columns__8">
+            <div class="u-text-center u-buffer-bottom">.span-columns(8);</div>
+            <div class="u-alt-bg u-block multiple-rows__48">.span-columns(4, 8);</div>
+            <div class="u-alt-bg u-block multiple-rows__48">.span-columns(4, 8);</div>
+          </div>
+        </div>
+      </article>
+
+      <article id="table" class="section-block table">
+        <h2 class="outer-container__heading u-text-center">Table grid</h2>
+        <div class="u-light-bg table__outer">
+          <div class="u-text-center outer-container__top-label">.outer-container();</div>
+          <div class="u-dark-bg u-block">
+            <div class="u-text-center">.fill-parent();<br>.row(table);</div>
+          </div>
+          <div class="table__row">
+            <div class="u-alt-bg u-block table__cell--4">.span-columns(4, 12, table);<br>.pad();</div>
+            <div class="u-alt-bg u-block table__cell--8">.span-columns(8, 12, table);<br>.pad();</div>
+          </div>
+        </div>
+      </article>
+
+      <article id="shift" class="section-block shift">
+        <h2 class="outer-container__heading u-text-center">Shifting columns</h2>
+        <div class="u-light-bg shift__outer">
+          <div class="u-text-center outer-container__top-label">.outer-container();</div>
+          <div class="u-dark-bg u-block u-text-center shift__nested">.span-columns(6);<br>.shift(3);</div>
+        </div>
+      </article>
+
+      <article id="auto-rows" class="section-block auto-rows">
+        <h2 class="outer-container__heading u-text-center">Automatic rows</h2>
+        <div class="u-light-bg auto-rows__outer">
+          <div class="u-text-center outer-container__top-label">.outer-container();</div>
+          <ul class="auto-rows__list">
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item {<br>&nbsp;&nbsp;.span-columns(3);<br>&nbsp;&nbsp;.omega(4n);<br>}</li>
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item</li>
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item</li>
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item</li>
+
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item</li>
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item</li>
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item</li>
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item</li>
+
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item</li>
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item</li>
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item</li>
+            <li class="u-dark-bg u-block auto-rows__list__item">li.item</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="mixed" class="section-block mixed">
+        <h2 class="outer-container__heading u-text-center">Mixed layout</h2>
+        <div class="u-light-bg mixed__outer">
+          <div class="u-text-center outer-container__top-label">.outer-container();</div>
+          <ul class="mixed__list">
+            <li class="u-dark-bg u-block mixed__list__item">li.item {<br>&nbsp;&nbsp;.span-columns(3);<br>&nbsp;&nbsp;.omega(3n);<br><br>&nbsp;&nbsp;&:nth-child(4) {<br>&nbsp;&nbsp;&nbsp;&nbsp;.shift(3);<br>&nbsp;&nbsp;}<br>}
+            </li>
+            <li class="u-dark-bg u-block mixed__list__item">li.item</li>
+            <li class="u-dark-bg u-block mixed__list__item">li.item</li>
+
+            <li class="u-dark-bg u-block mixed__list__item">li.item</li>
+            <li class="u-dark-bg u-block mixed__list__item">li.item</li>
+            <li class="u-dark-bg u-block mixed__list__item">li.item</li>
+
+            <li class="u-dark-bg u-block mixed__list__item">li.item</li>
+            <li class="u-dark-bg u-block mixed__list__item">li.item</li>
+            <li class="u-dark-bg u-block mixed__list__item">li.item</li>
+          </ul>
+        </div>
+      </article>
+
+      <article id="media" class="section-block media">
+        <h2 class="outer-container__heading u-text-center">Media Queries</h2>
+        <div class="u-light-bg media__outer">
+          <div class="u-text-center outer-container__top-label">.outer-container();</div>
+
+          <div class="u-dark-bg u-block media__4">.span-columns(4);<br><br>@media (max-width: 500px) {<br>&nbsp;&nbsp;.span-columns(6);<br>}</div>
+          <div class="u-dark-bg u-block media__8">.span-columns(8);<br><br>@media (max-width: 500px) {<br>&nbsp;&nbsp;.span-columns(6);<br>}</div>
+        </div>
+      </article>
+
+      <p class="copy">Copyright © 2015 Alexandr Marinenko. PostCSS-Neat is free software, and may be redistributed under the terms specified in the <a href="https://github.com/jo-asakura/postcss-neat/blob/master/LICENSE">license</a>.</p>
+    </section>
+  </body>
+</html>
