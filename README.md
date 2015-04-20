@@ -64,7 +64,7 @@ To make your layout responsive, use the [postcss-media-minmax](https://github.co
 .container {
   @mixin span-columns 4;
 
-  @media (min-width >= 768px) {
+  @media (width >= 768px) {
     @mixin span-columns 2;
   }
 }
