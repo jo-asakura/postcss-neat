@@ -6,7 +6,7 @@ let functions = {
   // Convert to percentage
   percentage(value = 0) {
     value = +value;
-    return `${value < 1 ? (value * 100).toFixed(8) : value}%`;
+    return `${value <= 1 ? (value * 100).toFixed(8) : value}%`;
   },
 
   // Simple clearfix
