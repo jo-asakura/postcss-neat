@@ -20,7 +20,6 @@ postcss([
 Or, there is a gulp usage:
 
 ```js
-require('postcss-neat/es6-reg');
 
 var gulp = require('gulp');
 gulp
