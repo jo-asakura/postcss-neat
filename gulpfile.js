@@ -16,6 +16,23 @@ gulp.task('test', function () {
   return gulp.src('test/*.js', { read: false }).pipe(mocha());
 });
 
+gulp.task('clean', function (cb) {
+  var del = require('del');
+  del(['lib'], cb);
+});
+
+gulp.task('build', ['lint', 'clean'], function () {
+  var babel = require('gulp-babel');
+  var sourcemaps = require('gulp-sourcemaps');
+
+  return gulp.src('src/**/*.js')
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('lib'));
+});
+
+// an example of usage (see /demo folder for the result)
 gulp.task('css', function () {
   var concat = require('gulp-concat');
   var postcss = require('gulp-postcss');
@@ -23,7 +40,7 @@ gulp.task('css', function () {
   var postcssMixins = require('postcss-mixins');
   var postcssNested = require('postcss-nested');
   var postcssVars = require('postcss-simple-vars');
-  var neatMixins = require('./index.js');
+  var neatMixins = require('./lib/index.js');
 
   var processors = [
     autoprefixer({ browsers: ['last 1 version'] }),
@@ -36,23 +53,6 @@ gulp.task('css', function () {
     .pipe(postcss(processors))
     .pipe(concat('styles.css'))
     .pipe(gulp.dest('./demo/'));
-});
-
-// Remove the built files
-gulp.task('clean', function(cb) {
-  var del = require('del');
-  del(['lib'], cb);
-});
-
-gulp.task('build', ['lint', 'clean'], function() {
-  var babel = require('gulp-babel');
-  var sourcemaps = require('gulp-sourcemaps');
-
-  return gulp.src('src/**/*.js')
-      .pipe(sourcemaps.init())
-      .pipe(babel())
-      .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest('lib'));
 });
 
 gulp.task('default', ['lint', 'test']);

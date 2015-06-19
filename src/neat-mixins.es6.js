@@ -2,28 +2,27 @@
 
 import neatCore from './neat-core.es6.js';
 
-export default function (config) {
-  config = config || {}; // will extend in future to use custom `variables` definitions
+export default function (config = {}) {
   return {
-    'fill-parent': function () {
+    'fill-parent' () {
       return neatCore.fillParent();
     },
-    'omega': function (rule, query, direction) {
+    'omega' (rule, query, direction) {
       return neatCore.omega(query, direction);
     },
-    'outer-container': function (rule, maxWidth) {
+    'outer-container' (rule, maxWidth) {
       return neatCore.outerContainer(maxWidth);
     },
-    'pad': function (rule, ...padding) {
+    'pad' (rule, ...padding) {
       return neatCore.pad(padding);
     },
-    'row': function (rule, display) {
+    'row' (rule, display) {
       return neatCore.row(display);
     },
-    'shift': function (rule, columns, containerColumns, direction) {
+    'shift' (rule, columns, containerColumns, direction) {
       return neatCore.shift(columns, containerColumns, direction);
     },
-    'span-columns': function (rule, columns, containerColumns, display, direction) {
+    'span-columns' (rule, columns, containerColumns, display, direction) {
       return neatCore.spanColumns(columns, containerColumns, display, direction);
     }
   };
