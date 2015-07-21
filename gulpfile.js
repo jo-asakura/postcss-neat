@@ -32,21 +32,22 @@ gulp.task('build', ['lint', 'clean'], function () {
     .pipe(gulp.dest('lib'));
 });
 
+require('babel/polyfill');
+
 // an example of usage (see /demo folder for the result)
 gulp.task('css', function () {
   var concat = require('gulp-concat');
   var postcss = require('gulp-postcss');
-  var autoprefixer = require('autoprefixer-core');
-  var postcssMixins = require('postcss-mixins');
+  var postcssNeat = require('./lib/index.js');
   var postcssNested = require('postcss-nested');
   var postcssVars = require('postcss-simple-vars');
-  var neatMixins = require('./lib/index.js');
+  var autoprefixer = require('autoprefixer-core');
 
   var processors = [
     autoprefixer({ browsers: ['last 1 version'] }),
-    postcssVars,
-    postcssMixins({ mixins: neatMixins() }),
-    postcssNested
+    postcssNeat({}),
+    postcssNested,
+    postcssVars
   ];
 
   return gulp.src('./demo/*.scss')

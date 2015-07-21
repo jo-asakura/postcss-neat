@@ -44,7 +44,7 @@ const processRule = (node, ruleSet) => {
 };
 
 export default postcss.plugin('postcss-neat', (opts) => {
-  //let options = Object.assign({}, defaults, opts);
+  let options = Object.assign({}, defaults, opts);
   return (root) => {
     root.eachAtRule(/^neat-/i, (rule) => {
       let atRule = rule.name.trim().replace('neat-', '');
