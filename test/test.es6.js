@@ -3,7 +3,8 @@
 import chai from 'chai';
 let expect = chai.expect;
 
-import neatCore from '../src/neat-core.es6.js';
+import neatCore from '../src/core';
+import neatGrid from '../src/grid';
 
 import postcss from 'postcss';
 import postcssNested from 'postcss-nested';
@@ -278,7 +279,7 @@ describe('postcss-neat::core', function () {
   });
 
   it('5. fillParent should return proper rule-set', function (done) {
-    expect(neatCore.fillParent()).to.eql({
+    expect(neatGrid.fillParent()).to.eql({
       'box-sizing': 'border-box',
       'width': '100%'
     });
@@ -286,10 +287,10 @@ describe('postcss-neat::core', function () {
   });
 
   it('6. omega should return proper rule-set', function (done) {
-    expect(neatCore.omega()).to.eql({
+    expect(neatGrid.omega()).to.eql({
       'margin-right': 0
     });
-    expect(neatCore.omega('4n')).to.eql({
+    expect(neatGrid.omega('4n')).to.eql({
       '&:nth-child(4n)': {
         'margin-right': 0
       },
@@ -297,7 +298,7 @@ describe('postcss-neat::core', function () {
         'clear': 'left'
       }
     });
-    expect(neatCore.omega('auto')).to.eql({
+    expect(neatGrid.omega('auto')).to.eql({
       '&:last-child': {
         'margin-right': 0
       }
@@ -306,7 +307,7 @@ describe('postcss-neat::core', function () {
   });
 
   it('7. outerContainer should return proper rule-set', function (done) {
-    expect(neatCore.outerContainer('100%')).to.eql({
+    expect(neatGrid.outerContainer('100%')).to.eql({
       'max-width': '100%',
       'margin-left': 'auto',
       'margin-right': 'auto',
@@ -323,14 +324,14 @@ describe('postcss-neat::core', function () {
   });
 
   it('8. pad should return proper rule-set', function (done) {
-    expect(neatCore.pad('30px -20px 10px default')).to.eql({
+    expect(neatGrid.pad('30px -20px 10px default')).to.eql({
       'padding': '30px -20px 10px 2.35765160%'
     });
     done();
   });
 
   it('9. row should return proper rule-set', function (done) {
-    expect(neatCore.row()).to.eql({
+    expect(neatGrid.row()).to.eql({
       '*zoom': 1,
       'display': 'block',
       '&:before, &:after': {
@@ -345,17 +346,17 @@ describe('postcss-neat::core', function () {
   });
 
   it('10. shift should return proper rule-set', function (done) {
-    expect(neatCore.shift(-3, 6)).to.eql({
+    expect(neatGrid.shift(-3, 6)).to.eql({
       'margin-left': '-52.41457896%'
     });
-    expect(neatCore.shift(2)).to.eql({
+    expect(neatGrid.shift(2)).to.eql({
       'margin-left': '17.05960860%'
     });
     done();
   });
 
   it('11. spanColumns should return proper rule-set', function (done) {
-    expect(neatCore.spanColumns(6)).to.eql({
+    expect(neatGrid.spanColumns(6)).to.eql({
       'display': 'block',
       'float': 'left',
       'margin-right': '2.35765160%',
@@ -366,7 +367,7 @@ describe('postcss-neat::core', function () {
       }
     });
 
-    expect(neatCore.spanColumns(2, 6)).to.eql({
+    expect(neatGrid.spanColumns(2, 6)).to.eql({
       'display': 'block',
       'float': 'left',
       'margin-right': '4.82915791%',
@@ -377,7 +378,7 @@ describe('postcss-neat::core', function () {
       }
     });
 
-    expect(neatCore.spanColumns(3, 9, 'block-collapse')).to.eql({
+    expect(neatGrid.spanColumns(3, 9, 'block-collapse')).to.eql({
       'display': 'block',
       'float': 'left',
       'width': '34.38947856%',
@@ -387,7 +388,7 @@ describe('postcss-neat::core', function () {
       }
     });
 
-    expect(neatCore.spanColumns(2, 12, 'table')).to.eql({
+    expect(neatGrid.spanColumns(2, 12, 'table')).to.eql({
       'display': 'table-cell',
       'width': neatCore.functions.percentage(2 / 12)
     });

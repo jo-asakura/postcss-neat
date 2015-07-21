@@ -32,7 +32,7 @@ gulp.task('build', ['lint', 'clean'], function () {
     .pipe(gulp.dest('lib'));
 });
 
-require('babel/polyfill');
+//require('babel/polyfill');
 
 // an example of usage (see /demo folder for the result)
 gulp.task('css', function () {
