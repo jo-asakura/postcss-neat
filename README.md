@@ -20,7 +20,6 @@ postcss([
 There is a gulp usage:
 
 ```js
-
 var gulp = require('gulp');
 gulp
   .task('css', function () {
@@ -36,13 +35,6 @@ gulp
   .task('default', ['styles']);
 ```
 
-<!---
-If you are planning to override the default grid settings (12 columns, and etc.), it is easier to create a copy of an existing [_variables.less](/stylesheets/core/_variables.less) file for that purpose. Make sure to replace existing import to your version of variables in [_less-neat.less](/stylesheets/_less-neat.less):
-
-```less
-@import "core/_local_variables";
-```
--->
 See the [demo page](http://jo-asakura.github.io/postcss-neat/demo.html) for a full list of features.
 
 Let's walk through a simple example. Include the `outer-container` at-rule in the topmost container (to which the `max-width` setting will be applied):
@@ -88,6 +80,28 @@ To make your layout responsive, use the [postcss-media-minmax](https://github.co
   }
 }
 ```
+
+### Custom settings
+
+If you are planning to override the default grid settings (12 columns, and etc.), specify variables you want to override in `options` object that you pass to PostCSS-neat call:
+
+```js
+postcss([
+  require('postcss-neat')({
+    neatMaxWidth: '128em'
+  }),
+  require('postcss-nested')
+])
+```
+
+There is a list of all available variables to override:
+
+- `neatDefaultDisplay`, sets the default display mode. Can be `block`, `table` or `block-collapse`. Default is `block`.
+- `neatDefaultDirection`, sets the default layout direction of the grid. Can be `LTR` or `RTL`. Default is `LTR`.
+- `neatGridColumns`, sets the total number of columns in the grid. Default is `12`.
+- `neatColumnWidth`, sets the relative width of a single grid column. Default is `4.235801032000001em`.
+- `neatGutterWidth`, sets the relative width of a single grid gutter. Default is `1.618em`.
+- `neatMaxWidth`, sets the max-width property of the element that includes `outer-container`. Default is `64em`.
 
 ## PostCSS-Neat v1
 
