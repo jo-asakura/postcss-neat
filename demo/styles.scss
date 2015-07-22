@@ -97,7 +97,7 @@ body {
 }
 
 .outer-container {
-  @mixin outer-container;
+  @neat-outer-container;
 }
 
 header,
@@ -117,7 +117,7 @@ footer {
 }
 
 .global-wrapper {
-  @mixin outer-container;
+  @neat-outer-container;
   padding-bottom: 40px;
   position: relative;
 }
@@ -128,7 +128,7 @@ footer {
 }
 
 .faded-out-list {
-  @mixin outer-container;
+  @neat-outer-container;
   bottom: 0;
   left: 0;
   position: absolute;
@@ -138,7 +138,7 @@ footer {
 }
 
 .faded-out-list__item {
-  @mixin span-columns 1;
+  @neat-span-columns 1;
   background: $colorClouds;
   height: 100%;
 }
@@ -159,17 +159,17 @@ footer {
 
 /* -- */
 .basic__outer {
-  @mixin outer-container;
+  @neat-outer-container;
   padding: 20px 0;
 }
 
 .basic__outer__col {
-  @mixin span-columns 6;
+  @neat-span-columns 6;
 }
 
 /* -- */
 .multiple-rows__outer {
-  @mixin outer-container;
+  @neat-outer-container;
   padding: 20px 0 0;
 
   .u-block {
@@ -178,89 +178,89 @@ footer {
 }
 
 .multiple-rows__1 {
-  @mixin span-columns 1;
+  @neat-span-columns 1;
 }
 
 .multiple-rows__11 {
-  @mixin span-columns 11;
-  @mixin omega;
+  @neat-span-columns 11;
+  @neat-omega;
 }
 
 .multiple-rows__2 {
-  @mixin span-columns 2;
+  @neat-span-columns 2;
 }
 
 .multiple-rows__10 {
-  @mixin span-columns 10;
-  @mixin omega;
+  @neat-span-columns 10;
+  @neat-omega;
 }
 
 .multiple-rows__3 {
-  @mixin span-columns 3;
+  @neat-span-columns 3;
 }
 
 .multiple-rows__9 {
-  @mixin span-columns 9;
-  @mixin omega;
+  @neat-span-columns 9;
+  @neat-omega;
 }
 
 .multiple-rows__4 {
-  @mixin span-columns 4;
+  @neat-span-columns 4;
 }
 
 .multiple-rows__8 {
-  @mixin span-columns 8;
-  @mixin omega;
+  @neat-span-columns 8;
+  @neat-omega;
 }
 
 .multiple-rows__5 {
-  @mixin span-columns 5;
+  @neat-span-columns 5;
 }
 
 .multiple-rows__7 {
-  @mixin span-columns 7;
-  @mixin omega;
+  @neat-span-columns 7;
+  @neat-omega;
 }
 
 .multiple-rows__6 {
-  @mixin span-columns 6;
+  @neat-span-columns 6;
 }
 
 /* -- */
 .nesting-columns__outer {
-  @mixin outer-container;
+  @neat-outer-container;
   padding: 20px 0;
 }
 
 .nesting-columns__4 {
-  @mixin span-columns 4;
+  @neat-span-columns 4;
 }
 
 .nesting-columns__8 {
-  @mixin span-columns 8;
+  @neat-span-columns 8;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
 }
 
 .multiple-rows__48 {
-  @mixin span-columns 4 8;
+  @neat-span-columns 4 8;
 }
 
 /* -- */
 .table__outer {
-  @mixin outer-container;
+  @neat-outer-container;
   padding: 20px 0 0;
 }
 
 .table__row {
-  @mixin fill-parent;
-  @mixin row table;
+  @neat-fill-parent;
+  @neat-row table;
 }
 
 .table__cell--4 {
-  @mixin span-columns 4 12 table;
-  @mixin pad;
+  @neat-span-columns 4 12 table;
+  @neat-pad;
 
   /* just a visual thing */
   border-right: 1px solid #17a689;
@@ -274,19 +274,19 @@ footer {
 }
 
 .table__cell--8 {
-  @mixin span-columns 8 12 table;
-  @mixin pad;
+  @neat-span-columns 8 12 table;
+  @neat-pad;
 }
 
 /* -- */
 .shift__outer {
-  @mixin outer-container;
+  @neat-outer-container;
   padding: 20px 0;
 }
 
 .shift__nested {
-  @mixin span-columns 6;
-  @mixin shift 3;
+  @neat-span-columns 6;
+  @neat-shift 3;
 }
 
 /* -- */
@@ -295,59 +295,59 @@ footer {
 }
 
 .auto-rows__list {
-  @mixin outer-container;
+  @neat-outer-container;
 }
 
 .auto-rows__list__item {
-  @mixin span-columns 3;
-  @mixin omega 4n;
+  @neat-span-columns 3;
+  @neat-omega 4n;
   margin-bottom: 20px;
   min-height: 140px;
 }
 
 /* -- */
 .mixed__outer {
-  @mixin outer-container;
+  @neat-outer-container;
   padding: 20px 0;
 }
 
 .mixed__list {
-  @mixin outer-container;
+  @neat-outer-container;
 }
 
 .mixed__list__item {
-  @mixin span-columns 3;
-  @mixin omega 3n;
+  @neat-span-columns 3;
+  @neat-omega 3n;
   margin-bottom: 20px;
   min-height: 180px;
 
   &:nth-child(4) {
-    @mixin shift 3;
+    @neat-shift 3;
   }
 }
 
 /* -- */
 .media__outer {
-  @mixin outer-container;
+  @neat-outer-container;
   padding: 20px 0;
 }
 
 .media__4 {
-  @mixin span-columns 4;
+  @neat-span-columns 4;
 }
 
 @media (max-width: 500px) {
   .media__4 {
-    @mixin span-columns 6;
+    @neat-span-columns 6;
   }
 }
 
 .media__8 {
-  @mixin span-columns 8;
+  @neat-span-columns 8;
 }
 
 @media (max-width: 500px) {
   .media__8 {
-    @mixin span-columns 6;
+    @neat-span-columns 6;
   }
 }
