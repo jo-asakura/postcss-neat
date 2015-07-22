@@ -241,7 +241,7 @@ describe('postcss-neat::usage', function () {
       done);
   });
 
-  it('16. `outer-container` and custom options should render proper rule-set', function (done) {
+  it('16. `outer-container` and custom `neatMaxWidth` should render proper rule-set', function (done) {
     test(
       `.element {
          @neat-outer-container;
@@ -267,7 +267,7 @@ describe('postcss-neat::usage', function () {
       });
   });
 
-  it('17. `span-columns 12` and custom options should render proper rule-set', function (done) {
+  it('17. `span-columns 12` and custom `neatGutterWidth` should render proper rule-set', function (done) {
     let columns = 12;
 
     let options = Object.assign({}, neatCore.variables);
@@ -292,6 +292,26 @@ describe('postcss-neat::usage', function () {
        }`,
       done, {
         neatGutterWidth: options.neatGutterWidth
+      });
+  });
+
+  it('18. `span-columns 6` and custom `neatGridColumns` should render proper rule-set', function (done) {
+    test(
+      `.element {
+         @neat-span-columns 6;
+       }`,
+      `.element {
+         display: block;
+         float: left;
+         margin-right: 4.82915791%;
+         width: 100%;
+       }
+
+       .element:last-child {
+         margin-right: 0;
+       }`,
+      done, {
+        neatGridColumns: 6
       });
   });
 });
