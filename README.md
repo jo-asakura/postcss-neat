@@ -45,7 +45,7 @@ If you are planning to override the default grid settings (12 columns, and etc.)
 -->
 See the [demo page](http://jo-asakura.github.io/postcss-neat/demo.html) for a full list of features.
 
-Let's walk through a simple example. Include the `outer-container` mixin in the topmost container (to which the `max-width` setting will be applied):
+Let's walk through a simple example. Include the `outer-container` at-rule in the topmost container (to which the `max-width` setting will be applied):
 
 ```css
 .container {
