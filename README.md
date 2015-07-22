@@ -17,7 +17,7 @@ postcss([
 ])
 ```
 
-Or, there is a gulp usage:
+There is a gulp usage:
 
 ```js
 
@@ -89,6 +89,10 @@ To make your layout responsive, use the [postcss-media-minmax](https://github.co
 }
 ```
 
+## PostCSS-Neat v1
+
+Second version of PostCSS-Neat introduced breaking changes. [Here][old-doc] is old documentation if you're still using PostCSS-Neat version 1.X.X.
+
 ## Credits
 
 PostCSS-Neat is created and maintained by Alexandr Marinenko. The project is heavily inspired by amazing Sass framework [Bourbon Neat](http://neat.bourbon.io). Tweet your questions or suggestions to [@jo_asakura](https://twitter.com/jo_asakura).
@@ -106,3 +110,4 @@ Copyright © 2015 Alexandr Marinenko. PostCSS-Neat is free software, and may be 
 
   [postcss-neat]: http://jo-asakura.github.io/postcss-neat/
   [postcss-nested]: https://github.com/postcss/postcss-nested
+  [old-doc]: https://github.com/jo-asakura/postcss-neat/blob/0197c392253b13196e00145f6365b330024a1a5f/README.md
