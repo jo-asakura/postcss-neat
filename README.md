@@ -83,7 +83,7 @@ To make your layout responsive, use the [postcss-media-minmax](https://github.co
 
 ### Custom settings
 
-If you are planning to override the default grid settings (12 columns, and etc.), specify variables you want to override in `options` object that you pass to PostCSS-neat call:
+If you are planning to override the default grid settings (12 columns, and etc.), set variables you want to override in `options` that you pass to PostCSS-neat call:
 
 ```js
 postcss([
@@ -94,7 +94,7 @@ postcss([
 ])
 ```
 
-There is a list of all available variables to override:
+There is a list of all available variables:
 
 - `neatDefaultDisplay`, sets the default display mode. Can be `block`, `table` or `block-collapse`. Default is `block`.
 - `neatDefaultDirection`, sets the default layout direction of the grid. Can be `LTR` or `RTL`. Default is `LTR`.
