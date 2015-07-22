@@ -105,6 +105,29 @@ gulp
   }
 }</code></pre>
 
+<h3>
+<a id="custom-settings" class="anchor" href="#custom-settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom settings</h3>
+
+<p>If you are planning to override the default grid settings (12 columns, and etc.), set variables you want to override in <code>options</code> that you pass to PostCSS-neat call:</p>
+
+<pre><code>postcss([
+  require('postcss-neat')({
+    neatMaxWidth: '128em'
+  }),
+  require('postcss-nested')
+])</code></pre>
+
+<p>There is a list of all available variables:</p>
+
+<ul>
+  <li><code>neatDefaultDisplay</code>, sets the default display mode. Can be <code>block</code>, <code>table</code> or <code>block-collapse</code>. Default is <code>block</code>.</li>
+  <li><code>neatDefaultDirection</code>, sets the default layout direction of the grid. Can be LTR or RTL. Default is <code>LTR</code>.</li>
+  <li><code>neatGridColumns</code>, sets the total number of columns in the grid. Default is <code>12</code>.</li>
+  <li><code>neatColumnWidth</code>, sets the relative width of a single grid column. Default is <code>4.235801032000001em</code>.</li>
+  <li><code>neatGutterWidth</code>, sets the relative width of a single grid gutter. Default is <code>1.618em</code>.</li>
+  <li><code>neatMaxWidth</code>, sets the max-width property of the element that includes outer-container. Default is <code>64em</code>.</li>
+</ul>
+
 <h2>
 <a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
 
@@ -133,6 +156,6 @@ gulp
       </div>
     </div>
 
-  
+
   </body>
 </html>
