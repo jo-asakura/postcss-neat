@@ -14,8 +14,8 @@ import CleanCss from 'clean-css';
 let minifier = new CleanCss();
 let cleanCss = (css) => minifier.minify(css || '').styles;
 
-let test = (input, output, done) => {
-  postcss([postcssNeat({}), postcssNested]).process(input)
+let test = (input, output, done, options = {}) => {
+  postcss([postcssNeat(options), postcssNested]).process(input)
     .then((result) => {
       //console.log('RESULT: ', result.css);
       expect(cleanCss(result.css)).to.eql(cleanCss(output));
@@ -240,6 +240,80 @@ describe('postcss-neat::usage', function () {
        }`,
       done);
   });
+
+  it('16. `outer-container` and custom `neatMaxWidth` should render proper rule-set', function (done) {
+    test(
+      `.element {
+         @neat-outer-container;
+       }`,
+      `.element {
+         *zoom: 1;
+         max-width: 128em;
+         margin-left: auto;
+         margin-right: auto;
+       }
+
+       .element:before,
+       .element:after {
+         content: " ";
+         display: table;
+       }
+
+       .element:after {
+         clear: both;
+       }`,
+      done, {
+        neatMaxWidth: '128em'
+      });
+  });
+
+  it('17. `span-columns 12` and custom `neatGutterWidth` should render proper rule-set', function (done) {
+    let columns = 12;
+
+    let options = Object.assign({}, neatCore.variables);
+    options.neatGutterWidth = '20em';
+
+    let flexGutter = neatCore.functions.flexGutter(options.neatGridColumns, options.neatColumnWidth, options.neatGutterWidth);
+    let flexWidth = neatCore.functions.flexWidth(columns, options.neatGridColumns, options.neatColumnWidth, options.neatGutterWidth);
+
+    test(
+      `.element {
+         @neat-span-columns ${columns};
+       }`,
+      `.element {
+         display: block;
+         float: left;
+         margin-right: ${neatCore.functions.percentage(flexGutter)};
+         width: ${neatCore.functions.percentage(flexWidth)};
+       }
+
+       .element:last-child {
+         margin-right: 0;
+       }`,
+      done, {
+        neatGutterWidth: options.neatGutterWidth
+      });
+  });
+
+  it('18. `span-columns 6` and custom `neatGridColumns` should render proper rule-set', function (done) {
+    test(
+      `.element {
+         @neat-span-columns 6;
+       }`,
+      `.element {
+         display: block;
+         float: left;
+         margin-right: 4.82915791%;
+         width: 100%;
+       }
+
+       .element:last-child {
+         margin-right: 0;
+       }`,
+      done, {
+        neatGridColumns: 6
+      });
+  });
 });
 
 describe('postcss-neat::core', function () {
@@ -266,15 +340,19 @@ describe('postcss-neat::core', function () {
   });
 
   it('3. functions.flexWidth should return correct column\'s width', function (done) {
-    expect(neatCore.functions.percentage(neatCore.functions.flexWidth(6, 12))).to.eql('48.82117420%');
-    expect(neatCore.functions.percentage(neatCore.functions.flexWidth(2, 6))).to.eql('30.11389472%');
-    expect(neatCore.functions.percentage(neatCore.functions.flexWidth(1, 12))).to.eql('6.17215270%');
+    let funcs = neatCore.functions;
+    let options = neatCore.variables;
+    expect(funcs.percentage(funcs.flexWidth(6, 12, options.neatColumnWidth, options.neatGutterWidth))).to.eql('48.82117420%');
+    expect(funcs.percentage(funcs.flexWidth(2, 6, options.neatColumnWidth, options.neatGutterWidth))).to.eql('30.11389472%');
+    expect(funcs.percentage(funcs.flexWidth(1, 12, options.neatColumnWidth, options.neatGutterWidth))).to.eql('6.17215270%');
     done();
   });
 
   it('4. functions.flexGutter should return correct column\'s gutter', function (done) {
-    expect(neatCore.functions.percentage(neatCore.functions.flexGutter(12))).to.eql('2.35765160%');
-    expect(neatCore.functions.percentage(neatCore.functions.flexGutter(6))).to.eql('4.82915791%');
+    let funcs = neatCore.functions;
+    let options = neatCore.variables;
+    expect(funcs.percentage(funcs.flexGutter(12, options.neatColumnWidth, options.neatGutterWidth))).to.eql('2.35765160%');
+    expect(funcs.percentage(funcs.flexGutter(6, options.neatColumnWidth, options.neatGutterWidth))).to.eql('4.82915791%');
     done();
   });
 

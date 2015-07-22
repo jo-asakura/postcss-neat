@@ -33,7 +33,9 @@ import functions from '../core/functions.es6.js';
 //     clear: both;
 //   }
 
-let outerContainer = (maxWidth = variables.neatMaxWidth) => {
+let outerContainer = (maxWidth, options = variables) => {
+  maxWidth = maxWidth || options.neatMaxWidth;
+
   return Object.assign({
     'max-width': maxWidth,
     'margin-left': 'auto',

@@ -1,7 +1,5 @@
 'use strict';
 
-import config from './variables.es6.js';
-
 let functions = {
   // Convert to percentage
   percentage(value = 0) {
@@ -27,7 +25,7 @@ let functions = {
 functions = Object.assign(functions, {
   // Sets layout direction and layout opposite direction to `@direction`
   // and `@opposite-direction` accordingly.
-  getDirection(layout = 'LTR') {
+  getDirection(layout) {
     return {
       direction: layout === 'LTR' ? 'right' : 'left',
       oppositeDirection: layout === 'LTR' ? 'left' : 'right'
@@ -35,7 +33,7 @@ functions = Object.assign(functions, {
   },
 
   // Sets neat grid column's width to `@column-width`.
-  flexWidth(columns, containerColumns, column = config.neatColumnWidth, gutter = config.neatGutterWidth) {
+  flexWidth(columns, containerColumns, column, gutter) {
     columns = +columns;
     containerColumns = +containerColumns;
     column = +column.replace('em', '');
@@ -48,7 +46,7 @@ functions = Object.assign(functions, {
   },
 
   // Sets neat grid column's gutter (the white space between two columns) to `@column-gutter`.
-  flexGutter(containerColumns = config.neatGridColumns, column = config.neatColumnWidth, gutter = config.neatGutterWidth) {
+  flexGutter(containerColumns, column, gutter) {
     containerColumns = +containerColumns;
     column = +column.replace('em', '');
     gutter = +gutter.replace('em', '');

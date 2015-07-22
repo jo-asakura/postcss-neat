@@ -19,8 +19,8 @@ import functions from '../core/functions.es6.js';
 //     padding: 30px -20px 10px 2.3576516%;
 //   }
 
-let pad = (padding = 'default') => {
-  var columnGutter = functions.percentage(functions.flexGutter());
+let pad = (padding = 'default', options = variables) => {
+  var columnGutter = functions.percentage(functions.flexGutter(options.neatGridColumns, options.neatColumnWidth, options.neatGutterWidth));
   var parts = Array.isArray(padding) ? padding : padding.split(' ');
 
   if (!parts.length) {

@@ -53,13 +53,14 @@ import functions from '../core/functions.es6.js';
 //     margin-right: 0;
 //   }
 
-let spanColumns = (columns,
-                   containerColumns = variables.neatGridColumns,
-                   display = variables.neatDefaultDisplay,
-                   direction = variables.neatDefaultDirection) => {
+let spanColumns = (columns, containerColumns, display, direction, options = variables) => {
+  containerColumns = containerColumns || options.neatGridColumns;
+  display = display || options.neatDefaultDisplay;
+  direction = direction || options.neatDefaultDirection;
+
   var directions = functions.getDirection(direction);
-  var columnWidth = functions.flexWidth(columns, containerColumns);
-  var columnGutter = functions.flexGutter(containerColumns);
+  var columnWidth = functions.flexWidth(columns, containerColumns, options.neatColumnWidth, options.neatGutterWidth);
+  var columnGutter = functions.flexGutter(containerColumns, options.neatColumnWidth, options.neatGutterWidth);
 
   if (display === 'table') {
     return {
