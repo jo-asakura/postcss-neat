@@ -1,5 +1,7 @@
 'use strict';
 
+import variables from '../core/variables.es6.js';
+
 // Forces the element to fill its parent container.
 //
 // @example - LESS Usage
@@ -13,7 +15,7 @@
 //     width: 100%;
 //   }
 
-let fillParent = () => {
+let fillParent = (options = variables) => {
   return {
     'box-sizing': 'border-box',
     'width': '100%'

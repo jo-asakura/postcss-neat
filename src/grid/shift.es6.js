@@ -32,12 +32,13 @@ import functions from '../core/functions.es6.js';
 //     margin-left: 17.0596086%;
 //   }
 
-let shift = (columns,
-             containerColumns = variables.neatGridColumns,
-             direction = variables.neatDefaultDirection) => {
+let shift = (columns, containerColumns, direction, options = variables) => {
+  containerColumns = containerColumns || options.neatGridColumns;
+  direction = direction || options.neatDefaultDirection;
+
   var directions = functions.getDirection(direction);
-  var columnWidth = functions.flexWidth(1, containerColumns);
-  var columnGutter = functions.flexGutter(containerColumns);
+  var columnWidth = functions.flexWidth(1, containerColumns, options.neatColumnWidth, options.neatGutterWidth);
+  var columnGutter = functions.flexGutter(containerColumns, options.neatColumnWidth, options.neatGutterWidth);
   return {
     [`margin-${directions.oppositeDirection}`]: functions.percentage(columns * columnWidth + columns * columnGutter)
   };

@@ -47,8 +47,9 @@ import functions from '../core/functions.es6.js';
 //     margin-right: 0;
 //   }
 
-let omega = (query,
-             direction = variables.neatDefaultDirection) => {
+let omega = (query, direction, options = variables) => {
+  direction = direction || options.neatDefaultDirection;
+
   var directions = functions.getDirection(direction);
   if (!query) {
     return {

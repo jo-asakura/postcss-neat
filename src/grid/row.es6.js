@@ -36,7 +36,9 @@ import fillParent from './fill-parent.es6.js';
 //   clear: both;
 // }
 
-let row = (display = variables.neatDefaultDisplay) => {
+let row = (display, options = variables) => {
+  display = display || options.neatDefaultDisplay;
+
   if (display === 'table') {
     return Object.assign({
       'display': 'table',
