@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="A semantic and fluid grid framework on top of PostCSS">
-    <meta name="keywords" content="columns,grid,layout,media,media-queries,neat,queries,postcss,semantic">
+    <meta name="keywords" content="columns,grid,layout,media,media-queries,neat,queries,postcss,semantic,postcss-plugin">
     <meta name="author" content="Alexandr Marinenko (jo-asakura)">
 
     <title>PostCSS-neat by Alexandr Marinenko</title>
@@ -43,41 +43,54 @@
 <h2>
 <a id="using-postcss-neat" class="anchor" href="#using-postcss-neat" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using PostCSS-Neat</h2>
 
-<p>Note, that you must use this plugin in conjunction with <a href="https://github.com/postcss/postcss-mixins">postcss-mixins</a> and <a href="https://github.com/postcss/postcss-nested">postcss-nested</a>:</p>
+<p>Note, that you must use this plugin in conjunction with <a href="https://github.com/postcss/postcss-nested">postcss-nested</a>:</p>
 
 <pre><code>postcss([
-  require('postcss-mixins')({
-    mixins: require('postcss-neat')()
-  }),
+  require('postcss-neat')(/* { options } */),
   require('postcss-nested')
-])
-</code></pre>
+])</code></pre>
+
+<p>There is a gulp usage:</p>
+
+<pre><code>var gulp = require('gulp');
+gulp
+  .task('css', function () {
+    var processors = [
+      require('autoprefixer-core')({ browsers: ['last 1 version'] }),
+      require('postcss-neat')(/* { options } */),
+      require('postcss-nested')
+    ];
+    return gulp.src('./input/*.css')
+      .pipe(require('gulp-postcss')(processors))
+      .pipe(gulp.dest('./output/'));
+  })
+  .task('default', ['styles']);</code></pre>
 
 <p>See the <a href="demo.html">demo page</a> for a full list of features.</p>
 
-<p>Let's walk through a simple example. Include the <code>outer-container</code> mixin in the topmost container (to which the <code>max-width</code> setting will be applied):</p>
+<p>Let's walk through a simple example. Include the <code>outer-container</code> at-rule in the topmost container (to which the <code>max-width</code> setting will be applied):</p>
 
 <pre><code>.container {
-  @mixin outer-container;
+  @neat-outer-container;
 }
 </code></pre>
 
 <p>Then use <code>span-columns</code> on any element to specify the number of columns it should span:</p>
 
 <pre><code>.element {
-  @mixin span-columns 6;
+  @neat-span-columns 6;
 }</code></pre>
 
 <p>If the element's parent isn't the top-most container, you need to add the number of columns of the parent element to keep the right proportions:</p>
 
 <pre><code>.container {
-  @mixin outer-container;
+  @neat-outer-container;
 
   .parent-element {
-    @mixin span-columns 8;
+    @neat-span-columns 8;
 
     .element {
-      @mixin span-columns 6 8;
+      @neat-span-columns 6 8;
     }
   }
 }</code></pre>
@@ -85,10 +98,10 @@
 <p>To make your layout responsive, use the <a href="https://github.com/postcss/postcss-media-minmax">postcss-media-minmax</a> media queries functionality to modify both the grid and the layout:</p>
 
 <pre><code>.container {
-  @mixin span-columns 4;
+  @neat-span-columns 4;
 
   @media (width >= 768px) {
-    @mixin span-columns 2;
+    @neat-span-columns 2;
   }
 }</code></pre>
 
