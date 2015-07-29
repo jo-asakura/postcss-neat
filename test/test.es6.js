@@ -7,7 +7,6 @@ import neatCore from '../src/core';
 import neatGrid from '../src/grid';
 
 import postcss from 'postcss';
-import postcssNested from 'postcss-nested';
 import postcssNeat from '../src/index.js';
 
 import CleanCss from 'clean-css';
@@ -15,7 +14,7 @@ let minifier = new CleanCss();
 let cleanCss = (css) => minifier.minify(css || '').styles;
 
 let test = (input, output, done, options = {}) => {
-  postcss([postcssNeat(options), postcssNested]).process(input)
+  postcss([postcssNeat(options)]).process(input)
     .then((result) => {
       //console.log('RESULT: ', result.css);
       expect(cleanCss(result.css)).to.eql(cleanCss(output));
@@ -223,10 +222,8 @@ describe('postcss-neat::usage', function () {
 
   it('15. `span-columns 2 6` should render proper rule-set', function (done) {
     test(
-      `.element {
-         .nested-element {
-           @neat-span-columns 2 6;
-         }
+      `.element .nested-element {
+         @neat-span-columns 2 6;
        }`,
       `.element .nested-element {
          display: block;

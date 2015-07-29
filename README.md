@@ -8,12 +8,9 @@
 
 ## Using PostCSS-Neat
 
-Note, that you must use this plugin in conjunction with [postcss-nested][postcss-nested]:
-
 ```js
 postcss([
-  require('postcss-neat')(/* { options } */),
-  require('postcss-nested')
+  require('postcss-neat')(/* { options } */)
 ])
 ```
 
@@ -25,14 +22,13 @@ gulp
   .task('css', function () {
     var processors = [
       require('autoprefixer-core')({ browsers: ['last 1 version'] }),
-      require('postcss-neat')(/* { options } */),
-      require('postcss-nested')
+      require('postcss-neat')(/* { options } */)
     ];
     return gulp.src('./input/*.css')
       .pipe(require('gulp-postcss')(processors))
       .pipe(gulp.dest('./output/'));
   })
-  .task('default', ['styles']);
+  .task('default', ['css']);
 ```
 
 See the [demo page](http://jo-asakura.github.io/postcss-neat/demo.html) for a full list of features.
@@ -89,8 +85,7 @@ If you are planning to override the default grid settings (12 columns, and etc.)
 postcss([
   require('postcss-neat')({
     neatMaxWidth: '128em'
-  }),
-  require('postcss-nested')
+  })
 ])
 ```
 
@@ -123,5 +118,4 @@ Copyright © 2015 Alexandr Marinenko. PostCSS-Neat is free software, and may be 
   [travis-ci]: https://img.shields.io/travis/jo-asakura/postcss-neat/master.svg?style=flat-square
 
   [postcss-neat]: http://jo-asakura.github.io/postcss-neat/
-  [postcss-nested]: https://github.com/postcss/postcss-nested
   [old-doc]: https://github.com/jo-asakura/postcss-neat/blob/0197c392253b13196e00145f6365b330024a1a5f/README.md

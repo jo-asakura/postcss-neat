@@ -7,6 +7,7 @@ import neatCore from './core';
 import neatGrid from './grid';
 
 let options = {};
+let ampInsertedNodes = {};
 
 const atRules = {
   'fill-parent' () {
@@ -32,12 +33,31 @@ const atRules = {
   }
 };
 
-const processRule = (node, ruleSet) => {
+const unwrapAmp = (nodeSelector, parentSelectors = []) => {
+  if (nodeSelector.indexOf('&:') >= 0) {
+    return parentSelectors.map((selector) => {
+      return nodeSelector.replace(/&/g, selector);
+    }).join(',');
+  }
+  return nodeSelector;
+};
+
+const getGlobalSelector = (node) => {
+  if (node.parent && node.parent.type === 'atrule') {
+    return `${node.parent.name} ${node.parent.params} ${node.selector}`;
+  }
+  return node.selector;
+};
+
+const processRule = (ruleSet, node) => {
   Object.keys(ruleSet).forEach((prop) => {
     if (typeof ruleSet[prop] === 'object' && ruleSet[prop]) {
-      let childRule = postcss.rule({ selector: prop });
-      processRule(childRule, ruleSet[prop]);
-      node.append(childRule);
+      let extRule = postcss.rule({ selector: unwrapAmp(prop, node.selectors) });
+      processRule(ruleSet[prop], extRule);
+
+      let globalSelector = getGlobalSelector(node);
+      node.parent.insertAfter(ampInsertedNodes[globalSelector] || node, extRule);
+      ampInsertedNodes[globalSelector] = extRule;
     } else {
       node.append({ prop, value: ruleSet[prop] });
     }
@@ -47,12 +67,13 @@ const processRule = (node, ruleSet) => {
 export default postcss.plugin('postcss-neat', (opts) => {
   options = Object.assign({}, neatCore.variables, opts);
   return (root) => {
+    ampInsertedNodes = {};
     root.eachAtRule(/^neat-/i, (rule) => {
       let atRule = rule.name.trim().replace('neat-', '');
       if (atRules[atRule]) {
         let params = rule.params.trim() ? rule.params.trim().split(' ') : [];
         let ruleSet = atRules[atRule](...params);
-        processRule(rule.parent, ruleSet);
+        processRule(ruleSet, rule.parent);
       }
       rule.removeSelf();
     });
