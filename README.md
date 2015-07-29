@@ -8,6 +8,8 @@
 
 ## Using PostCSS-Neat
 
+Usage:
+
 ```js
 postcss([
   require('postcss-neat')(/* { options } */)
