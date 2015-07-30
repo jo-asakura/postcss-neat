@@ -35,6 +35,15 @@
           <h1>
 <a id="postcss-neat" class="anchor" href="#postcss-neat" aria-hidden="true">PostCSS-Neat</a></h1>
 
+<p>
+  <a href="https://travis-ci.org/jo-asakura/postcss-neat" target="_blank">
+    <img src="https://img.shields.io/travis/jo-asakura/postcss-neat/master.svg?style=flat-square" alt="build state" />
+  </a>
+  <a href="https://www.npmjs.com/package/postcss-neat" target="_blank">
+    <img src="http://img.shields.io/npm/v/postcss-neat.svg?style=flat-square" alt="npm version" />
+  </a>
+</p>
+
 <h2>
 <a id="a-semantic-and-fluid-grid-framework-on-top-of-postcss" class="anchor" href="#a-semantic-and-fluid-grid-framework-on-top-of-postcss" aria-hidden="true">A semantic and fluid grid framework on top of PostCSS</a></h2>
 
@@ -43,11 +52,10 @@
 <h2>
 <a id="using-postcss-neat" class="anchor" href="#using-postcss-neat" aria-hidden="true">Using PostCSS-Neat</a></h2>
 
-<p>Note, that you must use this plugin in conjunction with <a href="https://github.com/postcss/postcss-nested">postcss-nested</a>:</p>
+<p>Usage:</p>
 
 <pre><code>postcss([
-  require('postcss-neat')(/* { options } */),
-  require('postcss-nested')
+  require('postcss-neat')(/* { options } */)
 ])</code></pre>
 
 <p>There is a gulp usage:</p>
@@ -57,8 +65,7 @@ gulp
   .task('css', function () {
     var processors = [
       require('autoprefixer-core')({ browsers: ['last 1 version'] }),
-      require('postcss-neat')(/* { options } */),
-      require('postcss-nested')
+      require('postcss-neat')(/* { options } */)
     ];
     return gulp.src('./input/*.css')
       .pipe(require('gulp-postcss')(processors))
@@ -113,8 +120,7 @@ gulp
 <pre><code>postcss([
   require('postcss-neat')({
     neatMaxWidth: '128em'
-  }),
-  require('postcss-nested')
+  })
 ])</code></pre>
 
 <p>There is a list of all available variables:</p>
