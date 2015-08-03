@@ -1,6 +1,6 @@
 {
   "name": "postcss-neat",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "PostCSS plugin that provides a semantic and fluid grid framework.",
   "keywords": [
     "postcss-plugin",
