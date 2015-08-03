@@ -88,6 +88,9 @@ To help debug your layouts there is a `show-grid` at-rule, note that it should b
 }
 ```
 
+The result you get by using `show-grid` at-rule is shown below:
+<img src="/demo/debugging-grid.png" alt="@neat-show-grid" width="75%" />
+
 ### Custom settings
 
 If you are planning to override the default grid settings (12 columns, and etc.), set variables you want to override in `options` that you pass to PostCSS-neat call:
