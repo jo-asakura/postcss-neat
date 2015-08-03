@@ -118,6 +118,7 @@ footer {
 
 .global-wrapper {
   @neat-outer-container;
+  @neat-show-grid; /* defaults to 1 12 */
   padding-bottom: 40px;
   position: relative;
 }
@@ -125,22 +126,6 @@ footer {
 .section-block {
   position: relative;
   z-index: 1;
-}
-
-.faded-out-list {
-  @neat-outer-container;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 0;
-}
-
-.faded-out-list__item {
-  @neat-span-columns 1;
-  background: $colorClouds;
-  height: 100%;
 }
 
 .outer-container__heading {

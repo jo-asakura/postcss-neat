@@ -79,6 +79,15 @@ To make your layout responsive, use the [postcss-media-minmax](https://github.co
 }
 ```
 
+To help debug your layouts there is a `show-grid` at-rule, note that it should be used in conjunction with `outer-container`:
+
+```css
+.container {
+  @neat-outer-container;
+  @neat-show-grid; /* defaults to 1 12 */
+}
+```
+
 ### Custom settings
 
 If you are planning to override the default grid settings (12 columns, and etc.), set variables you want to override in `options` that you pass to PostCSS-neat call:
