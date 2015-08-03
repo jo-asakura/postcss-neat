@@ -4,9 +4,9 @@ import variables from '../core/variables.es6.js';
 
 // Forces the element to fill its parent container.
 //
-// @example - LESS Usage
+// @example - PostCSS Usage
 //   .element {
-//     @mixin fill-parent;
+//     @neat-fill-parent;
 //   }
 //
 // @example - CSS Output
@@ -14,6 +14,7 @@ import variables from '../core/variables.es6.js';
 //     box-sizing: border-box;
 //     width: 100%;
 //   }
+//
 
 let fillParent = (options = variables) => {
   return {

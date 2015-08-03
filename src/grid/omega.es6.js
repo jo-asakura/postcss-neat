@@ -17,17 +17,17 @@ import functions from '../core/functions.es6.js';
 // @direction
 //  Sets the layout direction. Can be `LTR` (left-to-right) or `RTL` (right-to-left).
 //
-// @example - LESS Usage
+// @example - PostCSS Usage
 //   .element {
-//     @mixin omega;
+//     @neat-omega;
 //   }
 //
 //   .nth-element {
-//     @mixin omega 4n;
+//     @neat-omega 4n;
 //   }
 //
 //   .auto-element {
-//     @mixin omega auto;
+//     @neat-omega auto;
 //   }
 //
 // @example - CSS Output
@@ -46,11 +46,12 @@ import functions from '../core/functions.es6.js';
 //   .auto-element:last-child {
 //     margin-right: 0;
 //   }
+//
 
 let omega = (query, direction, options = variables) => {
   direction = direction || options.neatDefaultDirection;
 
-  var directions = functions.getDirection(direction);
+  let directions = functions.getDirection(direction);
   if (!query) {
     return {
       [`margin-${directions.direction}`]: 0

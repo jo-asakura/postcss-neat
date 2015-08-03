@@ -15,9 +15,9 @@ import fillParent from './fill-parent.es6.js';
 // @direction
 //  Sets the layout direction. Can be `LTR` (left-to-right) or `RTL` (right-to-left).
 //
-// @example - LESS Usage
+// @example - PostCSS Usage
 //  .element {
-//    @mixin row;
+//    @neat-row;
 //  }
 //
 // @example - CSS Output
@@ -35,6 +35,7 @@ import fillParent from './fill-parent.es6.js';
 // .element:after {
 //   clear: both;
 // }
+//
 
 let row = (display, options = variables) => {
   display = display || options.neatDefaultDisplay;

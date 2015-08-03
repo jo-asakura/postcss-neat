@@ -21,12 +21,12 @@ import functions from '../core/functions.es6.js';
 //   If passed `table`, it sets the display property to `table-cell` and calculates the width of the
 //   element without taking gutters into consideration. The result does not align with the block-based grid.
 //
-// @example - LESS Usage
+// @example - PostCSS Usage
 //   .element {
-//     @mixin span-columns 6;
+//     @neat-span-columns 6;
 //
 //    .nested-element {
-//      @mixin span-columns 2 6;
+//      @neat-span-columns 2 6;
 //    }
 //  }
 //
@@ -52,15 +52,16 @@ import functions from '../core/functions.es6.js';
 //   .element .nested-element:last-child {
 //     margin-right: 0;
 //   }
+//
 
 let spanColumns = (columns, containerColumns, display, direction, options = variables) => {
   containerColumns = containerColumns || options.neatGridColumns;
   display = display || options.neatDefaultDisplay;
   direction = direction || options.neatDefaultDirection;
 
-  var directions = functions.getDirection(direction);
-  var columnWidth = functions.flexWidth(columns, containerColumns, options.neatColumnWidth, options.neatGutterWidth);
-  var columnGutter = functions.flexGutter(containerColumns, options.neatColumnWidth, options.neatGutterWidth);
+  let directions = functions.getDirection(direction);
+  let columnWidth = functions.flexWidth(columns, containerColumns, options.neatColumnWidth, options.neatGutterWidth);
+  let columnGutter = functions.flexGutter(containerColumns, options.neatColumnWidth, options.neatGutterWidth);
 
   if (display === 'table') {
     return {
@@ -72,7 +73,7 @@ let spanColumns = (columns, containerColumns, display, direction, options = vari
       'display': 'block',
       'float': directions.oppositeDirection,
       'width': functions.percentage(columnWidth + columnGutter),
-
+      // ---
       '&:last-child': {
         'width': functions.percentage(columnWidth)
       }
@@ -83,7 +84,7 @@ let spanColumns = (columns, containerColumns, display, direction, options = vari
       'float': directions.oppositeDirection,
       [`margin-${directions.direction}`]: functions.percentage(columnGutter),
       'width': functions.percentage(columnWidth),
-
+      // ---
       '&:last-child': {
         [`margin-${directions.direction}`]: 0
       }

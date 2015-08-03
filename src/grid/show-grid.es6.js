@@ -3,8 +3,7 @@
 import variables from '../core/variables.es6.js';
 import functions from '../core/functions.es6.js';
 
-// Specifies the number of columns an element should span. If the selector is nested the number of columns
-// of its parent element should be passed as an argument as well.
+// Creates a debugging grid for the parent of columns. Works in conjunction with `@neat-outer-container`.
 //
 // @columns
 //   The unitless number of columns the element spans (required).
@@ -15,37 +14,36 @@ import functions from '../core/functions.es6.js';
 //   The number of columns the parent element spans. If is not passed, it is equal to `@neat-grid-columns`,
 //   the total number of columns in the grid.
 //
-// @example - LESS Usage
-//   .element {
-//     @mixin span-columns 6;
-//
-//    .nested-element {
-//      @mixin span-columns 2 6;
+// @example - PostCSS Usage
+//    .element {
+//      @neat-outer-container;
+//      @neat-show-grid 4 12;
 //    }
-//  }
 //
 // @example - CSS Output
-//   .element {
-//     display: block;
-//     float: left;
-//     margin-right: 2.3576516%;
-//     width: 48.8211742%;
-//   }
+//    .element {
+//      *zoom: 1;
+//      max-width: 128em;
+//      margin-left: auto;
+//      margin-right: auto;
+//    }
+//    .element:before,
+//    .element:after {
+//      content: " ";
+//      display: table;
+//    }
+//    .element:after {
+//      clear: both;
+//      background: linear-gradient(to right,
+//        #ecf0f1 0, #ecf0f1 31.7615656%,
+//        transparent 31.7615656%, transparent 34.1192172%,
+//        #ecf0f1 34.1192172%, #ecf0f1 65.88078280%,
+//        transparent 65.88078280%, transparent 68.2384344%,
+//        #ecf0f1 68.2384344%, #ecf0f1 100%);
+//      height: 100%;
+//      width: 100%;
+//    }
 //
-//   .element:last-child {
-//     margin-right: 0;
-//   }
-//
-//   .element .nested-element {
-//     display: block;
-//     float: left;
-//     margin-right: 4.82915791%;
-//     width: 30.11389472%;
-//   }
-//
-//   .element .nested-element:last-child {
-//     margin-right: 0;
-//   }
 
 const generateArray = (length = 0) => {
   return Array.from(new Array(length), (x, i) => i);
@@ -56,7 +54,7 @@ let showGrid = (columns, containerColumns, direction, options = variables) => {
   direction = direction || options.neatDefaultDirection;
 
   let columnsCount = +(containerColumns / columns);
-  var directions = functions.getDirection(direction);
+  let directions = functions.getDirection(direction);
   let columnWidth = functions.flexWidth(columns, containerColumns, options.neatColumnWidth, options.neatGutterWidth);
   let columnGutter = functions.flexGutter(containerColumns, options.neatColumnWidth, options.neatGutterWidth);
 

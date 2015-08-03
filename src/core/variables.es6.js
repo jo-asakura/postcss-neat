@@ -24,7 +24,7 @@ let variables = {
   // Sets the max-width property of the element that includes `outer-container()`.
   neatMaxWidth: ((1024 / 16) * locals.defaultEmSize).toString() + 'em',
 
-  //
+  // Sets the background color for the debugging grid.
   debugGridColor: '#ecf0f1'
 };
 

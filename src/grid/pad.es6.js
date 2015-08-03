@@ -9,19 +9,20 @@ import functions from '../core/functions.es6.js';
 //   A list of padding value(s) to use. Passing `default` in the list will result
 //    in using the gutter width as a padding value.
 //
-// @example - LESS Usage
+// @example - PostCSS Usage
 //   .element {
-//     @mixin pad 30px -20px 10px default;
+//     @neat-pad 30px -20px 10px default;
 //   }
 //
 // @example - CSS Output
 //   .element {
 //     padding: 30px -20px 10px 2.3576516%;
 //   }
+//
 
 let pad = (padding = 'default', options = variables) => {
-  var columnGutter = functions.percentage(functions.flexGutter(options.neatGridColumns, options.neatColumnWidth, options.neatGutterWidth));
-  var parts = Array.isArray(padding) ? padding : padding.split(' ');
+  let columnGutter = functions.percentage(functions.flexGutter(options.neatGridColumns, options.neatColumnWidth, options.neatGutterWidth));
+  let parts = Array.isArray(padding) ? padding : padding.split(' ');
 
   if (!parts.length) {
     parts.push('default');
