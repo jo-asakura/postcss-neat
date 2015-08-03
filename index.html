@@ -112,6 +112,18 @@ gulp
   }
 }</code></pre>
 
+<p>To help debug your layouts there is a <code>show-grid</code> at-rule, note that it should be used in conjunction with <code>outer-container</code>:</p>
+
+<pre><code>.container {
+  @neat-outer-container;
+  @neat-show-grid; /* defaults to 1 12 */
+}</code></pre>
+
+<p>The result you get by using <code>show-grid</code> at-rule is shown below:</p>
+
+<img src="https://raw.githubusercontent.com/jo-asakura/postcss-neat/master/demo/debugging-grid.png"
+     style="height: auto; width: 75%" alt="@neat-show-grid" />
+
 <h3>
 <a id="custom-settings" class="anchor" href="#custom-settings" aria-hidden="true">Custom settings</a></h3>
 
