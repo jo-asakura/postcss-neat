@@ -337,8 +337,12 @@ describe('postcss-neat::usage', function () {
             #ecf0f1 34.1192172%, #ecf0f1 65.88078280%,
             transparent 65.88078280%, transparent 68.2384344%,
             #ecf0f1 68.2384344%, #ecf0f1 100%);
-          height: 100%;
-          width: 100%;
+          bottom: 0;
+          display: block;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0
         }`,
       done, {
         neatMaxWidth: '128em'

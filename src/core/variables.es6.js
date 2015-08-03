@@ -12,6 +12,9 @@ let variables = {
   // Sets the default layout direction of the grid. Can be `LTR` or `RTL`.
   neatDefaultDirection: 'LTR',
 
+  // Sets the number of columns the element spans. Its value can be overridden inside a mixin using the `@columns` variable.
+  neatElementColumns: 1,
+
   // Sets the total number of columns in the grid. Its value can be overridden inside a mixin using the `@container-columns` variable.
   neatGridColumns: 12,
 
@@ -21,7 +24,7 @@ let variables = {
   // Sets the relative width of a single grid gutter. The unit used should be the same one used to define `@neat-column-width`.
   neatGutterWidth: (locals.defaultEmSize * locals.goldenRatio).toString() + 'em',
 
-  // Sets the max-width property of the element that includes `outer-container()`.
+  // Sets the max-width property of the element that includes `@neat-outer-container`.
   neatMaxWidth: ((1024 / 16) * locals.defaultEmSize).toString() + 'em',
 
   // Sets the background color for the debugging grid.

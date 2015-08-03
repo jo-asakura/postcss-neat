@@ -7,12 +7,12 @@ import functions from '../core/functions.es6.js';
 // of its parent element should be passed as an argument as well.
 //
 // @columns
-//   The unitless number of columns the element spans (required).
+//   The unitless number of columns the element spans. If is not passed, it is equal to `@neatElementColumns`.
 //   `@columns` also accepts decimals for when it's necessary to break out of the standard grid.
 //   E.g. Passing `2.4` in a standard 12 column grid will divide the row into 5 columns.
 //
 // @container-columns
-//   The number of columns the parent element spans. If is not passed, it is equal to `@neat-grid-columns`,
+//   The number of columns the parent element spans. If is not passed, it is equal to `@neatGridColumns`,
 //   the total number of columns in the grid.
 //
 // @display
@@ -55,6 +55,7 @@ import functions from '../core/functions.es6.js';
 //
 
 let spanColumns = (columns, containerColumns, display, direction, options = variables) => {
+  columns = columns || options.neatElementColumns;
   containerColumns = containerColumns || options.neatGridColumns;
   display = display || options.neatDefaultDisplay;
   direction = direction || options.neatDefaultDirection;
