@@ -22,7 +22,10 @@ let variables = {
   neatGutterWidth: (locals.defaultEmSize * locals.goldenRatio).toString() + 'em',
 
   // Sets the max-width property of the element that includes `outer-container()`.
-  neatMaxWidth: ((1024 / 16) * locals.defaultEmSize).toString() + 'em'
+  neatMaxWidth: ((1024 / 16) * locals.defaultEmSize).toString() + 'em',
+
+  //
+  debugGridColor: '#ecf0f1'
 };
 
 export default variables;

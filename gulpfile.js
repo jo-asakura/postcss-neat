@@ -48,9 +48,9 @@ gulp.task('css', function () {
     postcssVars
   ];
 
-  return gulp.src('./demo/*.scss')
+  return gulp.src('./demo/input.scss')
     .pipe(postcss(processors))
-    .pipe(concat('styles.css'))
+    .pipe(concat('output.css'))
     .pipe(gulp.dest('./demo/'));
 });
 
