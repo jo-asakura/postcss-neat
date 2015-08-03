@@ -10,9 +10,9 @@ import functions from '../core/functions.es6.js';
 // @local-max-width
 //   Max width to be applied to the element. Can be a percentage or a measure.
 //
-// @example - LESS Usage
+// @example - PostCSS Usage
 //   .element {
-//     @mixin outer-container 100%;
+//     @neat-outer-container 100%;
 //   }
 //
 // @example - CSS Output
@@ -32,6 +32,7 @@ import functions from '../core/functions.es6.js';
 //   .element:after {
 //     clear: both;
 //   }
+//
 
 let outerContainer = (maxWidth, options = variables) => {
   maxWidth = maxWidth || options.neatMaxWidth;

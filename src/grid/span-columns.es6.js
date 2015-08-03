@@ -7,12 +7,12 @@ import functions from '../core/functions.es6.js';
 // of its parent element should be passed as an argument as well.
 //
 // @columns
-//   The unitless number of columns the element spans (required).
+//   The unitless number of columns the element spans. If is not passed, it is equal to `@neatElementColumns`.
 //   `@columns` also accepts decimals for when it's necessary to break out of the standard grid.
 //   E.g. Passing `2.4` in a standard 12 column grid will divide the row into 5 columns.
 //
 // @container-columns
-//   The number of columns the parent element spans. If is not passed, it is equal to `@neat-grid-columns`,
+//   The number of columns the parent element spans. If is not passed, it is equal to `@neatGridColumns`,
 //   the total number of columns in the grid.
 //
 // @display
@@ -21,12 +21,12 @@ import functions from '../core/functions.es6.js';
 //   If passed `table`, it sets the display property to `table-cell` and calculates the width of the
 //   element without taking gutters into consideration. The result does not align with the block-based grid.
 //
-// @example - LESS Usage
+// @example - PostCSS Usage
 //   .element {
-//     @mixin span-columns 6;
+//     @neat-span-columns 6;
 //
 //    .nested-element {
-//      @mixin span-columns 2 6;
+//      @neat-span-columns 2 6;
 //    }
 //  }
 //
@@ -52,15 +52,17 @@ import functions from '../core/functions.es6.js';
 //   .element .nested-element:last-child {
 //     margin-right: 0;
 //   }
+//
 
 let spanColumns = (columns, containerColumns, display, direction, options = variables) => {
+  columns = columns || options.neatElementColumns;
   containerColumns = containerColumns || options.neatGridColumns;
   display = display || options.neatDefaultDisplay;
   direction = direction || options.neatDefaultDirection;
 
-  var directions = functions.getDirection(direction);
-  var columnWidth = functions.flexWidth(columns, containerColumns, options.neatColumnWidth, options.neatGutterWidth);
-  var columnGutter = functions.flexGutter(containerColumns, options.neatColumnWidth, options.neatGutterWidth);
+  let directions = functions.getDirection(direction);
+  let columnWidth = functions.flexWidth(columns, containerColumns, options.neatColumnWidth, options.neatGutterWidth);
+  let columnGutter = functions.flexGutter(containerColumns, options.neatColumnWidth, options.neatGutterWidth);
 
   if (display === 'table') {
     return {
@@ -72,7 +74,7 @@ let spanColumns = (columns, containerColumns, display, direction, options = vari
       'display': 'block',
       'float': directions.oppositeDirection,
       'width': functions.percentage(columnWidth + columnGutter),
-
+      // ---
       '&:last-child': {
         'width': functions.percentage(columnWidth)
       }
@@ -83,7 +85,7 @@ let spanColumns = (columns, containerColumns, display, direction, options = vari
       'float': directions.oppositeDirection,
       [`margin-${directions.direction}`]: functions.percentage(columnGutter),
       'width': functions.percentage(columnWidth),
-
+      // ---
       '&:last-child': {
         [`margin-${directions.direction}`]: 0
       }

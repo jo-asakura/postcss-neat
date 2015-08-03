@@ -107,7 +107,7 @@ header h1, footer h1 {
   padding: 0;
 }
 
-.global-wrapper {
+.global-wrapper { /* defaults to 1 12 */
   padding-bottom: 40px;
   position: relative;
   max-width: 64em;
@@ -125,44 +125,19 @@ header h1, footer h1 {
   clear: both;
 }
 
-.section-block {
-  position: relative;
-  z-index: 1;
-}
-
-.faded-out-list {
+.global-wrapper:after {
+  background: linear-gradient(to right,#ecf0f1 0.00000000%, #ecf0f1 6.17215270%,transparent 6.17215270%, transparent 8.52980430%,#ecf0f1 8.52980430%, #ecf0f1 14.70195700%,transparent 14.70195700%, transparent 17.05960860%,#ecf0f1 17.05960860%, #ecf0f1 23.23176130%,transparent 23.23176130%, transparent 25.58941290%,#ecf0f1 25.58941290%, #ecf0f1 31.76156560%,transparent 31.76156560%, transparent 34.11921720%,#ecf0f1 34.11921720%, #ecf0f1 40.29136990%,transparent 40.29136990%, transparent 42.64902150%,#ecf0f1 42.64902150%, #ecf0f1 48.82117420%,transparent 48.82117420%, transparent 51.17882580%,#ecf0f1 51.17882580%, #ecf0f1 57.35097850%,transparent 57.35097850%, transparent 59.70863010%,#ecf0f1 59.70863010%, #ecf0f1 65.88078280%,transparent 65.88078280%, transparent 68.23843440%,#ecf0f1 68.23843440%, #ecf0f1 74.41058710%,transparent 74.41058710%, transparent 76.76823870%,#ecf0f1 76.76823870%, #ecf0f1 82.94039140%,transparent 82.94039140%, transparent 85.29804300%,#ecf0f1 85.29804300%, #ecf0f1 91.47019570%,transparent 91.47019570%, transparent 93.82784730%,#ecf0f1 93.82784730%, #ecf0f1 100.00000000%);
   bottom: 0;
+  display: block;
   left: 0;
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 0;
-  max-width: 64em;
-  margin-left: auto;
-  margin-right: auto;
-  *zoom: 1;
 }
 
-.faded-out-list:before, .faded-out-list:after {
-  content: " ";
-  display: table;
-}
-
-.faded-out-list:after {
-  clear: both;
-}
-
-.faded-out-list__item {
-  background: #ecf0f1;
-  height: 100%;
-  display: block;
-  float: left;
-  margin-right: 2.35765160%;
-  width: 6.17215270%;
-}
-
-.faded-out-list__item:last-child {
-  margin-right: 0;
+.section-block {
+  position: relative;
+  z-index: 1;
 }
 
 .outer-container__heading {

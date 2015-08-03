@@ -14,13 +14,13 @@ import functions from '../core/functions.es6.js';
 // @direction
 //  Sets the layout direction. Can be `LTR` (left-to-right) or `RTL` (right-to-left).
 //
-// @example - LESS Usage
+// @example - PostCSS Usage
 //   .element-neg {
-//     @mixin shift -3 6;
+//     @neat-shift -3 6;
 //   }
 //
 //   .element-pos {
-//     @mixin shift 2;
+//     @neat-shift 2;
 //   }
 //
 // @example - CSS output
@@ -31,14 +31,15 @@ import functions from '../core/functions.es6.js';
 //   .element-pos {
 //     margin-left: 17.0596086%;
 //   }
+//
 
 let shift = (columns, containerColumns, direction, options = variables) => {
   containerColumns = containerColumns || options.neatGridColumns;
   direction = direction || options.neatDefaultDirection;
 
-  var directions = functions.getDirection(direction);
-  var columnWidth = functions.flexWidth(1, containerColumns, options.neatColumnWidth, options.neatGutterWidth);
-  var columnGutter = functions.flexGutter(containerColumns, options.neatColumnWidth, options.neatGutterWidth);
+  let directions = functions.getDirection(direction);
+  let columnWidth = functions.flexWidth(1, containerColumns, options.neatColumnWidth, options.neatGutterWidth);
+  let columnGutter = functions.flexGutter(containerColumns, options.neatColumnWidth, options.neatGutterWidth);
   return {
     [`margin-${directions.oppositeDirection}`]: functions.percentage(columns * columnWidth + columns * columnGutter)
   };
