@@ -111,6 +111,7 @@ There is a list of all available variables:
 - `neatColumnWidth`, sets the relative width of a single grid column. Default is `4.235801032000001em`.
 - `neatGutterWidth`, sets the relative width of a single grid gutter. Default is `1.618em`.
 - `neatMaxWidth`, sets the max-width property of the element that includes `outer-container`. Default is `64em`.
+- `debugGridColor`, sets the background color for the debugging grid. Default is `#ecf0f1`.
 
 ## PostCSS-Neat v1
 
