@@ -28,8 +28,8 @@ const atRules = {
   'shift' (columns, containerColumns, direction) {
     return neatGrid.shift(columns, containerColumns, direction, options);
   },
-  'show-grid' (columns, containerColumns, direction) {
-    return neatGrid.showGrid(columns, containerColumns, direction, options);
+  'show-grid' (columns, containerColumns, location, direction) {
+    return neatGrid.showGrid(columns, containerColumns, location, direction, options);
   },
   'span-columns' (columns, containerColumns, display, direction) {
     return neatGrid.spanColumns(columns, containerColumns, display, direction, options);

@@ -1,6 +1,6 @@
 {
   "name": "postcss-neat",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "PostCSS plugin that provides a semantic and fluid grid framework.",
   "keywords": [
     "postcss-plugin",
@@ -44,7 +44,6 @@
     "gulp-mocha": "2.0.1",
     "gulp-postcss": "^5.1.1",
     "gulp-sourcemaps": "^1.5.2",
-    "npm": "^2.8.3",
     "postcss-nested": "^0.3.2",
     "postcss-simple-vars": "^0.3.0"
   },

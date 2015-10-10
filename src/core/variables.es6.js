@@ -28,7 +28,10 @@ let variables = {
   neatMaxWidth: ((1024 / 16) * locals.defaultEmSize).toString() + 'em',
 
   // Sets the background color for the debugging grid.
-  debugGridColor: '#ecf0f1'
+  debugGridColor: '#ecf0f1',
+
+  // Sets the default location of the debugging grid.
+  debugGridLocation: 'after'
 };
 
 export default variables;

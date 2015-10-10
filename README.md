@@ -91,6 +91,15 @@ To help debug your layouts there is a `show-grid` at-rule, note that it should b
 The result you get by using `show-grid` at-rule is shown below:
 <img src="/demo/debugging-grid.png" alt="@neat-show-grid" width="75%" />
 
+The third parameter of `show-grid` at-rule controls the location of where the grid will be applied to. The allowed values are `before`, `after` (default value) or `background`:
+
+```css
+.container {
+  @neat-outer-container;
+  @neat-show-grid 4 12 background;
+}
+```
+
 ### Custom settings
 
 If you are planning to override the default grid settings (12 columns, and etc.), set variables you want to override in `options` that you pass to PostCSS-neat call:
@@ -112,6 +121,7 @@ There is a list of all available variables:
 - `neatGutterWidth`, sets the relative width of a single grid gutter. Default is `1.618em`.
 - `neatMaxWidth`, sets the max-width property of the element that includes `outer-container`. Default is `64em`.
 - `debugGridColor`, sets the background color for the debugging grid. Default is `#ecf0f1`.
+- `debugGridLocation`, sets the default location of the debugging grid. Default is `after`.
 
 ## PostCSS-Neat v1
 
