@@ -349,7 +349,7 @@ describe('postcss-neat::usage', function () {
       });
   });
 
-  it('19. `show-grid` in conjunction with `outer-container` should render proper rule-set', function (done) {
+  it('20. `show-grid` in conjunction with `outer-container` should render proper rule-set', function (done) {
     test(
       `.element {
          @neat-outer-container;
