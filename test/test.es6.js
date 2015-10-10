@@ -348,6 +348,37 @@ describe('postcss-neat::usage', function () {
         neatMaxWidth: '128em'
       });
   });
+
+  it('19. `show-grid` in conjunction with `outer-container` should render proper rule-set', function (done) {
+    test(
+      `.element {
+         @neat-outer-container;
+         @neat-show-grid 4 12 background;
+       }`,
+      `.element {
+          *zoom: 1;
+          max-width: 128em;
+          margin-left: auto;
+          margin-right: auto;
+          background: linear-gradient(to right,
+            #ecf0f1 0, #ecf0f1 31.7615656%,
+            transparent 31.7615656%, transparent 34.1192172%,
+            #ecf0f1 34.1192172%, #ecf0f1 65.88078280%,
+            transparent 65.88078280%, transparent 68.2384344%,
+            #ecf0f1 68.2384344%, #ecf0f1 100%);
+        }
+        .element:before,
+        .element:after {
+          content: " ";
+          display: table;
+        }
+        .element:after {
+          clear: both;
+        }`,
+      done, {
+        neatMaxWidth: '128em'
+      });
+  });
 });
 
 describe('postcss-neat::core', function () {

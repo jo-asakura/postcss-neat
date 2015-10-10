@@ -14,6 +14,9 @@ import functions from '../core/functions.es6.js';
 //   The number of columns the parent element spans. If is not passed, it is equal to `@neatGridColumns`,
 //   the total number of columns in the grid.
 //
+// @location
+//   The location of where the grid will be applied to: ['before', 'after' or 'background']
+//
 // @example - PostCSS Usage
 //    .element {
 //      @neat-outer-container;
@@ -53,9 +56,10 @@ const generateArray = (length = 0) => {
   return Array.from(new Array(length), (x, i) => i);
 };
 
-let showGrid = (columns, containerColumns, direction, options = variables) => {
+let showGrid = (columns, containerColumns, location, direction, options = variables) => {
   columns = columns || options.neatElementColumns;
   containerColumns = containerColumns || options.neatGridColumns;
+  location = location || options.debugGridLocation;
   direction = direction || options.neatDefaultDirection;
 
   let columnsCount = +(containerColumns / columns);
@@ -75,17 +79,24 @@ let showGrid = (columns, containerColumns, direction, options = variables) => {
     return memo;
   }, [directions.direction === 'right' ? 'to right' : 'to left']);
 
-  return {
-    '&:after': {
-      'background': `linear-gradient(${gradient.join(',')})`,
-      'bottom': '0',
-      'display': 'block',
-      'left': '0',
-      'position': 'absolute',
-      'right': '0',
-      'top': '0'
-    }
-  };
+  // 'before', 'after' or 'background'
+  if (location === 'background') {
+    return {
+      'background': `linear-gradient(${gradient.join(',')})`
+    };
+  } else if (location === 'before' || location === 'after') {
+    return {
+      [`&:${location}`]: {
+        'background': `linear-gradient(${gradient.join(',')})`,
+        'bottom': '0',
+        'display': 'block',
+        'left': '0',
+        'position': 'absolute',
+        'right': '0',
+        'top': '0'
+      }
+    };
+  }
 };
 
 export default showGrid;
