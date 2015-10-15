@@ -36,9 +36,9 @@ const atRules = {
   }
 };
 
-const unwrapAmp = (nodeSelector, parentSelectors = []) => {
-  if (nodeSelector.indexOf('&:') >= 0) {
-    return parentSelectors.map((selector) => {
+const unwrapAmp = (nodeSelector, node) => {
+  if (nodeSelector.indexOf('&:') >= 0 && node.name !== 'media') {
+    return node.selectors.map((selector) => {
       return nodeSelector.replace(/&/g, selector);
     }).join(',');
   }
@@ -48,21 +48,29 @@ const unwrapAmp = (nodeSelector, parentSelectors = []) => {
 const getGlobalSelector = (node) => {
   if (node.parent && node.parent.type === 'atrule') {
     return `${node.parent.name} ${node.parent.params} ${node.selector}`;
+  } else if (node.name === 'media') {
+    return getGlobalSelector(node.parent);
   }
   return node.selector;
 };
 
-const processRule = (ruleSet, node) => {
+const applyRuleSetToNode = (ruleSet, node) => {
   Object.keys(ruleSet).forEach((prop) => {
-    if (typeof ruleSet[prop] === 'object' && ruleSet[prop]) {
-      let extRule = postcss.rule({ selector: unwrapAmp(prop, node.selectors) });
-      processRule(ruleSet[prop], extRule);
+    let rule = ruleSet[prop];
+    if (typeof rule === 'object') {
+      if (node.name !== 'media') {
+        let extRule = postcss.rule({ selector: unwrapAmp(prop, node) });
+        applyRuleSetToNode(rule, extRule);
 
-      let globalSelector = getGlobalSelector(node);
-      node.parent.insertAfter(ampInsertedNodes[globalSelector] || node, extRule);
-      ampInsertedNodes[globalSelector] = extRule;
+        let globalSelector = getGlobalSelector(node);
+        node.parent.insertAfter(ampInsertedNodes[globalSelector] || node, extRule);
+        ampInsertedNodes[globalSelector] = extRule;
+      } else {
+        let mediaNestedRule = postcss.parse(`${prop} ${JSON.stringify(rule).replace(/"/g, '')}`);
+        node.append(mediaNestedRule);
+      }
     } else {
-      node.append({ prop, value: ruleSet[prop] });
+      node.append({ prop, value: rule });
     }
   });
 };
@@ -76,7 +84,7 @@ export default postcss.plugin('postcss-neat', (opts) => {
       if (atRules[atRule]) {
         let params = rule.params.trim() ? rule.params.trim().split(' ') : [];
         let ruleSet = atRules[atRule](...params);
-        processRule(ruleSet, rule.parent);
+        applyRuleSetToNode(ruleSet, rule.parent);
       }
       rule.removeSelf();
     });
