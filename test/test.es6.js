@@ -379,6 +379,31 @@ describe('postcss-neat::usage', function () {
         neatMaxWidth: '128em'
       });
   });
+
+  it('21. `span-columns` inside of @media should render proper rule-set', function (done) {
+    test(
+      `.parentElement {
+        .childElement {
+          @media (max-width: 900px) {
+            @neat-span-columns 9;
+          }
+        }
+      }`,
+      `.parentElement {
+        .childElement {
+          @media (max-width: 900px) {
+            display: block;
+            float: left;
+            margin-right: 2.35765160%;
+            width: 74.41058710%;
+            &:last-child {
+              margin-right: 0
+            }
+          }
+        }
+      }`,
+      done);
+  });
 });
 
 describe('postcss-neat::core', function () {
@@ -504,6 +529,17 @@ describe('postcss-neat::core', function () {
       'float': 'left',
       'margin-right': '2.35765160%',
       'width': '48.82117420%',
+
+      '&:last-child': {
+        'margin-right': 0
+      }
+    });
+
+    expect(neatGrid.spanColumns(9)).to.eql({
+      'display': 'block',
+      'float': 'left',
+      'margin-right': '2.35765160%',
+      'width': '74.41058710%',
 
       '&:last-child': {
         'margin-right': 0
