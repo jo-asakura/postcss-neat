@@ -54,7 +54,7 @@ const getGlobalSelector = (node) => {
   return node.selector;
 };
 
-const applyRuleSetToNode = (ruleSet, node) => {
+const applyRuleSetToNode = (ruleSet, node, currentAtRule) => {
   Object.keys(ruleSet).forEach((prop) => {
     let rule = ruleSet[prop];
     if (typeof rule === 'object') {
@@ -70,7 +70,11 @@ const applyRuleSetToNode = (ruleSet, node) => {
         node.append(mediaNestedRule);
       }
     } else {
-      node.append({ prop, value: rule });
+      if (currentAtRule) {
+        node.insertBefore(currentAtRule, { prop, value: rule });
+      } else {
+        node.append({ prop, value: rule });
+      }
     }
   });
 };
@@ -79,14 +83,14 @@ export default postcss.plugin('postcss-neat', (opts) => {
   options = Object.assign({}, neatCore.variables, opts);
   return (root) => {
     ampInsertedNodes = {};
-    root.eachAtRule(/^neat-/i, (rule) => {
+    root.walkAtRules(/^neat-/i, (rule) => {
       let atRule = rule.name.trim().replace('neat-', '');
       if (atRules[atRule]) {
         let params = rule.params.trim() ? rule.params.trim().split(' ') : [];
         let ruleSet = atRules[atRule](...params);
-        applyRuleSetToNode(ruleSet, rule.parent);
+        applyRuleSetToNode(ruleSet, rule.parent, rule);
       }
-      rule.removeSelf();
+      rule.remove();
     });
   };
 });
