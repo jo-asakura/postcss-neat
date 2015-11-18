@@ -16,7 +16,7 @@ let cleanCss = (css) => minifier.minify(css || '').styles;
 let test = (input, output, done, options = {}) => {
   postcss([postcssNeat(options)]).process(input)
     .then((result) => {
-      //console.log('RESULT: ', result.css);
+      // console.log('RESULT: ', result.css);
       expect(cleanCss(result.css)).to.eql(cleanCss(output));
       expect(result.warnings()).to.be.empty;
       done();
@@ -402,6 +402,27 @@ describe('postcss-neat::usage', function () {
           }
         }
       }`,
+      done);
+  });
+
+  it('22. Ensures that output CSS is in proper order', function (done) {
+    test(
+      `.element {
+         @neat-span-columns 8;
+         @neat-shift 2;
+         float: none;
+       }`,
+      `.element {
+         display: block;
+         float: left;
+         margin-right: 2.35765160%;
+         width: 65.88078280%;
+         margin-left: 17.05960860%;
+         float: none;
+       }
+       .element:last-child {
+         margin-right: 0;
+       }`,
       done);
   });
 });

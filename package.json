@@ -1,6 +1,6 @@
 {
   "name": "postcss-neat",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "PostCSS plugin that provides a semantic and fluid grid framework.",
   "keywords": [
     "postcss-plugin",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "babel": "^5.8.3",
-    "postcss": "^4.1.16"
+    "postcss": "^5.0.12"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.1.10",
