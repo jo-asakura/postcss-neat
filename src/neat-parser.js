@@ -1,5 +1,7 @@
 'use strict';
 
+require('babel-polyfill');
+
 import postcss from 'postcss';
 import neatCore from './core';
 import neatGrid from './grid';
