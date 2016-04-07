@@ -39,13 +39,15 @@ gulp.task('css', function () {
   var postcssNeat = require('./lib/index.js');
   var postcssNested = require('postcss-nested');
   var postcssVars = require('postcss-simple-vars');
+  var postcssMinMax = require('postcss-media-minmax');
   var autoprefixer = require('autoprefixer-core');
 
   var processors = [
     autoprefixer({ browsers: ['last 1 version'] }),
     postcssNeat({}),
     postcssNested,
-    postcssVars
+    postcssVars,
+    postcssMinMax
   ];
 
   return gulp.src('./demo/input.scss')
