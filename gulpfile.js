@@ -1,5 +1,6 @@
 'use strict';
 
+require('babel-core/register');
 var gulp = require('gulp');
 
 gulp.task('lint', function () {
@@ -27,7 +28,6 @@ gulp.task('build', ['lint', 'clean'], function () {
 });
 
 gulp.task('test', function () {
-  require('babel-core/register');
   var mocha = require('gulp-mocha');
   return gulp.src('test/*.js', { read: false }).pipe(mocha());
 });
