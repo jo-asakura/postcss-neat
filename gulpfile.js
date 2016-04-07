@@ -10,12 +10,6 @@ gulp.task('lint', function () {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('test', function () {
-  require('babel/register');
-  var mocha = require('gulp-mocha');
-  return gulp.src('test/*.js', { read: false }).pipe(mocha());
-});
-
 gulp.task('clean', function (cb) {
   var del = require('del');
   del(['lib'], cb);
@@ -27,9 +21,15 @@ gulp.task('build', ['lint', 'clean'], function () {
 
   return gulp.src('src/**/*.js')
     .pipe(sourcemaps.init())
-    .pipe(babel())
+    .pipe(babel({ presets: ['es2015'] }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('lib'));
+});
+
+gulp.task('test', function () {
+  require('babel-core/register');
+  var mocha = require('gulp-mocha');
+  return gulp.src('test/*.js', { read: false }).pipe(mocha());
 });
 
 // an example of usage (see /demo folder for the result)
@@ -40,7 +40,7 @@ gulp.task('css', function () {
   var postcssNested = require('postcss-nested');
   var postcssVars = require('postcss-simple-vars');
   var postcssMinMax = require('postcss-media-minmax');
-  var autoprefixer = require('autoprefixer-core');
+  var autoprefixer = require('autoprefixer');
 
   var processors = [
     autoprefixer({ browsers: ['last 1 version'] }),
