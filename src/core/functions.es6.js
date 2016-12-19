@@ -36,8 +36,8 @@ functions = Object.assign(functions, {
   flexWidth(columns, containerColumns, column, gutter) {
     columns = +columns;
     containerColumns = +containerColumns;
-    column = +column.replace('em', '');
-    gutter = +gutter.replace('em', '');
+    column = +column.replace('em', '').replace('px', '');
+    gutter = +gutter.replace('em', '').replace('px', '');
 
     var tmpWidth = columns * column + (columns - 1) * gutter;
     var tmpContainerWidth = containerColumns * column + (containerColumns - 1) * gutter;
@@ -48,8 +48,8 @@ functions = Object.assign(functions, {
   // Sets neat grid column's gutter (the white space between two columns) to `@column-gutter`.
   flexGutter(containerColumns, column, gutter) {
     containerColumns = +containerColumns;
-    column = +column.replace('em', '');
-    gutter = +gutter.replace('em', '');
+    column = +column.replace('em', '').replace('px', '');
+    gutter = +gutter.replace('em', '').replace('px', '');
 
     var tmpContainerWidth = containerColumns * column + (containerColumns - 1) * gutter;
 

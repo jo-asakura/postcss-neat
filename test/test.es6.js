@@ -16,7 +16,9 @@ let cleanCss = (css) => minifier.minify(css || '').styles;
 let test = (input, output, done, options = {}) => {
   postcss([postcssNeat(options)]).process(input)
     .then((result) => {
-      // console.log('RESULT: ', result.css);
+      // console.info('RESULT (expected):\n', output);
+      // console.info('RESULT:\n', result.css);
+      // console.info('-----');
       expect(cleanCss(result.css)).to.eql(cleanCss(output));
       expect(result.warnings()).to.be.empty;
       done();
